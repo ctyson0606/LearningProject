@@ -167,8 +167,11 @@ materials/generated/blackboard.md:
 - The current problem, explanations, derivations, worked examples, and
   feedback on the learner's answers. All math in LaTeX: `$...$` inline,
   `$$...$$` for display.
-- Overwrite it for each new problem or topic. Anything worth keeping goes
-  into materials/generated/ or the Obsidian notes.
+- Within one problem, append from top to bottom: the problem, the learner's
+  answer (copied from chat and typeset), feedback, hints, the next attempt,
+  so the whole exchange stays readable in one place.
+- Clear it when moving to the next problem or topic. Before clearing, save
+  anything worth keeping into materials/generated/ or the Obsidian notes.
 - Chat carries only short messages: a question to the learner, a quick
   reply, or a note that something new is on the blackboard, in the human
   language. No LaTeX in chat; a plain Unicode symbol such as x₁ is fine.

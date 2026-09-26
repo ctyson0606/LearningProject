@@ -39,7 +39,8 @@ template/
     sources/           The learner's originals (read-only)
     generated/         What agents produce (human-facing, edited in place)
       blackboard.md    All teaching (problem, explanation, derivation,
-                       feedback), math in LaTeX; overwritten per problem.
+                       feedback), math in LaTeX; appended within a problem,
+                       cleared on the next one.
                        Chat carries only short messages, no LaTeX.
       obsidian/        Obsidian-format notes; opened as a vault
   memory/
