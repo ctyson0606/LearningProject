@@ -10,84 +10,98 @@ For durable rules see METHOD.md.
 Build `template/`: a copy-to-adopt learning-project template that works like a
 local claude.ai Project, readable and writable by Claude Code, OpenCode and
 DeepSeek Harness, so that switching agents by hand (e.g. when the Claude quota
-runs out) loses no context. Spec approved 2026-09-26.
+runs out) loses no context. It must serve two cases: starting a new subject,
+and migrating an existing claude.ai Project. Spec approved 2026-09-26,
+extended the same day with migration, project instructions and Obsidian.
 
 ### Problem
-Each new subject to learn needs a local space holding the material, the
-conversation history and the memory. Every agent keeps its own history where
-the others cannot read it, so a new agent starts with no idea where the
-learning stands.
+Each subject needs a local space holding the material, the conversation
+history and the memory. Every agent keeps its own history where the others
+cannot read it, so a new agent starts with no idea where the learning stands.
+The learner's existing claude.ai Projects carry long hand-written tutor
+instructions that the local projects must be able to take over.
 
 ### Usage
-Copy the contents of `template/` into a new folder, put material into
-`materials/sources/`, start any agent there. That is "creating a Project".
-Switching projects is opening another folder.
+Copy the contents of `template/` into a new folder outside this repo, put
+material into `materials/sources/`, start any agent there. That is "creating
+a Project". Switching projects is opening another folder.
 
 ### Structure (data contract)
 ```
 template/
-  AGENTS.md            Setup state, topic, long-term goal, learner level,
-                       default method and checking style, human-facing
-                       language, sources overview, rules for every agent
+  AGENTS.md            Guard; framework (Status, start routine, Setup,
+                       modes, memory rules, files, language); then
+                       "Project instructions", this project's own tutor spec
   CLAUDE.md            "@AGENTS.md" only (Claude Code). OpenCode and DeepSeek
                        Harness read AGENTS.md directly.
   materials/
-    sources/           The learner's originals
-    generated/         What agents produce and revise (human-facing)
+    sources/           The learner's originals (read-only)
+    generated/         What agents produce (human-facing, edited in place)
+      obsidian/        Obsidian-format notes; opened as a vault
   memory/
     handoff.md         Current state: where learning stands, next step,
                        current mode (+ absolute deadline date), last agent, time
-    progress.md        What the learner understands and where they struggle
+    progress.md        Terse AI-facing index of what the learner knows and
+                       where they struggle; points to project records if any
     decisions.md       Decisions and their reasons
     todo.md            To-dos
     sessions/          One summary per conversation:
                        YYYY-MM-DD-HHMM-<agent>.md
 ```
 
-### Setup flow (first start, while AGENTS.md is still unset)
-The agent reads `materials/sources/`, then asks, skipping anything the sources
-already answer, two or three questions at a time:
-1. Language for human-facing content (asked first; later questions use it)
-2. Long-term goal: exam-oriented (possibly from zero) / genuine understanding /
-   exam + full understanding / other (free text). If an exam is involved, its date.
-3. Current level
-4. Preferred method: explain first / exercises first / guiding questions /
-   project-based
-5. How understanding is checked: quizzes / exercises / explain it back / none
-Then it writes AGENTS.md. After setup, AGENTS.md changes only on request
-(e.g. new material added).
+### Setup (first start, while Status says pending)
+Every answer is recorded the moment it is given, so a cut-off setup resumes
+without re-asking. Order: language (asked in the language of the learner's
+first message), then new vs migrate.
+- New: read sources; ask goal (exam / understanding / exam + understanding /
+  other, with exam date), level, method, checking; draft English Project
+  instructions; show a summary in the human language; write on confirmation.
+- Migrate: learner supplies old instructions (paste or file) and sorts files
+  themselves (originals -> sources/, earlier AI output -> generated/). Agent
+  translates to English without dropping rules, rewrites claude.ai-only parts
+  (knowledge search, read-only /mnt/project + present_files, "no filesystem,
+  download it", other Projects, progress bookmarks), lists every adaptation
+  in the human language, writes on confirmation. Current state comes from the
+  learner asking the old Project "where are we, what next" and pasting the
+  answer, which seeds handoff.md and progress.md.
 
-### Modes (current state, stored in handoff.md)
-- normal: follow the long-term goal and the defaults in AGENTS.md
-- sprint: e.g. "exam in 3 days". High-yield exam content only, no deep
-  tangents, many exercises
-- practice: no new material; set, mark and explain exercises
-- more added when needed
-The learner switches mode with one sentence. Relative deadlines are stored as
-absolute dates. Once the deadline passes, the agent asks whether to return to
-normal. Mode overrides the default method and checking style.
+### Precedence
+Project instructions win on how to teach, including their own modes and
+record systems. They never switch off the memory rules, the read-only rule for
+sources/, or English for AGENTS.md and memory/.
+
+### Modes (current mode stored in handoff.md)
+Defaults, replaced by modes the project instructions define:
+- normal: teach as the project instructions say
+- sprint: e.g. "exam in 3 days"; high-yield exam content only, many exercises
+- practice: nothing new; set, mark and explain exercises
+Deadlines are stored as absolute dates; once passed, the agent asks whether to
+return to normal.
 
 ### Update rules
 | Content | How |
 |---|---|
-| AGENTS.md | Written by the agent during setup; afterwards only on request |
+| AGENTS.md | Written by the agent during setup; afterwards only on request, except the source list when new sources appear |
 | handoff.md, sessions/, progress.md, decisions.md, todo.md | Automatic, whenever state actually changes |
 | "handoff" command | Optional; flushes the last stretch before a switch |
-| materials/generated/ | On request |
+| materials/generated/ | On request, or as the project instructions direct |
 | materials/sources/ | Only when the learner names a specific file |
 
 ### Language
-AI-facing content is English. Human-facing content uses the language asked
-for once during setup and recorded in AGENTS.md.
+AGENTS.md (including project instructions) and memory/: English.
+Conversation and materials/generated/: the human language, asked once during
+setup and recorded in Status.
 
 ### Non-goals
 Quota detection, automatic switching, routing, UI, a multi-project manager,
-importing claude.ai Projects, syncing raw transcripts, searching or indexing
-material, an adopt script, detecting new material automatically.
+migrating raw claude.ai conversation history, searching or indexing material,
+an adopt script, sorting migrated files automatically, anything specific to
+one course.
 
 ### Acceptance (each item run with the real agent; nothing counts unrun)
-1. Copy template to an empty folder, add one file to sources/, start Claude
-   Code: it enters setup, asks language first, writes AGENTS.md.
+1. New: copy template to an empty folder, add one file to sources/, start
+   Claude Code: it asks the language first, then new vs migrate, and writes
+   Project instructions only after showing a summary.
 2. Keep learning without saying anything about memory: handoff.md and
    sessions/ get updated.
 3. Close Claude Code without a handoff, open OpenCode: it states topic, where
@@ -97,36 +111,50 @@ material, an adopt script, detecting new material automatically.
 6. After a switch, the new agent does not ask for the language again; the
    current mode and deadline carry over.
 7. Nothing in sources/ is modified at any point.
+8. Migrate: run the learner's LeetCode / CCF CSP Project instructions through
+   the migrate path. The result is English, keeps every rule, has no
+   claude.ai-only mechanics left, records Traditional Chinese as the human
+   language, and the agent teaches the way the original Project did.
 
 ## Next Steps
 1. Install OpenCode and DeepSeek Harness (neither is installed on this machine
    as of 2026-09-26).
-2. Run acceptance 1-7 with the real agents. Also confirm the template guard
+2. Run acceptance 1-8 with the real agents. Also confirm the template guard
    holds for OpenCode and DeepSeek Harness inside this repo; only Claude Code
    has been probed.
 
 ## Open Questions
+- Can OpenCode and DeepSeek Harness read PDFs in materials/sources/? Claude
+  Code can (20 pages per read). If not, sources may need converting to text
+  on adoption.
 
 ## Known Annoyances
 
 ## Recent Decisions
-- template/AGENTS.md opens with a guard ("ignore if this sits in template/
-  under a folder with its own AGENTS.md") instead of storing the entry files
+- Project instructions live in a section of AGENTS.md, not a separate file:
+  OpenCode and DeepSeek Harness do not resolve imports, so a separate file
+  would load only if the agent remembered to read it. DeepSeek Harness caps
+  auto-loaded instructions at 64 KiB in total and truncates beyond that
+  (packages/bundle/base/cordis.patch.yml:291, commit 477b4f4); the learner's
+  longest existing instructions are an estimated 30-35 KiB in Chinese, less
+  once translated.
+- Migration carries instructions, files and a pasted state summary, not raw
+  conversation history: the claude.ai export is one large JSON for the whole
+  account, and a "where are we, what next" answer seeds handoff.md directly.
+- template/AGENTS.md opens with a guard instead of storing the entry files
   under other names: both Claude Code (probed) and DeepSeek Harness (source)
   load nested instruction files while this repo edits template/, and renaming
   would break "adopt = copy". Two fresh Claude Code runs in this repo loaded
   the template files and did not act on them.
 - Entry files are AGENTS.md plus a CLAUDE.md stub, no DeepSeek-specific file:
   DeepSeek Harness loads every existing AGENTS.md and CLAUDE.md by default and
-  does not resolve "@file" imports (read in source,
-  packages/context/agent-instructions/src/config.ts, commit 477b4f4).
+  does not resolve "@file" imports (packages/context/agent-instructions/src/
+  config.ts, commit 477b4f4).
 - Memory files update automatically rather than only on "handoff": the Claude
   quota can run out mid-conversation, after which the agent cannot be asked
   to hand off.
 - materials/ is split into sources/ and generated/: a copied template may have
   no git, so an overwritten original could not be recovered.
-- Learner notes split: memory/progress.md (AI-facing, terse) vs review notes
-  generated on request into materials/generated/ (human-facing).
 - Environment facts set to "none": the deliverable is Markdown only, with no
   code to install, build, lint or test; acceptance is manual runs with the
   real agents.
