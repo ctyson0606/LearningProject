@@ -99,17 +99,23 @@ material, an adopt script, detecting new material automatically.
 7. Nothing in sources/ is modified at any point.
 
 ## Next Steps
-1. Verify whether Claude Code and DeepSeek Harness load `template/AGENTS.md` /
-   `template/CLAUDE.md` as instructions while working in this repo, and decide
-   how to keep the template's rules from mixing with this repo's rules.
-2. Write the template files.
-3. Run acceptance 1-7 with the real agents.
+1. Install OpenCode and DeepSeek Harness (neither is installed on this machine
+   as of 2026-09-26).
+2. Run acceptance 1-7 with the real agents. Also confirm the template guard
+   holds for OpenCode and DeepSeek Harness inside this repo; only Claude Code
+   has been probed.
 
 ## Open Questions
 
 ## Known Annoyances
 
 ## Recent Decisions
+- template/AGENTS.md opens with a guard ("ignore if this sits in template/
+  under a folder with its own AGENTS.md") instead of storing the entry files
+  under other names: both Claude Code (probed) and DeepSeek Harness (source)
+  load nested instruction files while this repo edits template/, and renaming
+  would break "adopt = copy". Two fresh Claude Code runs in this repo loaded
+  the template files and did not act on them.
 - Entry files are AGENTS.md plus a CLAUDE.md stub, no DeepSeek-specific file:
   DeepSeek Harness loads every existing AGENTS.md and CLAUDE.md by default and
   does not resolve "@file" imports (read in source,
