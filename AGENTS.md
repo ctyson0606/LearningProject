@@ -5,13 +5,13 @@ MODE: project        # project | sprint
 TEAM: 1
 
 ## Environment facts
-install:
-dev:
-test:
-typecheck:
-lint:
-build:
-e2e:
+install: none
+dev: none
+test: none
+typecheck: none
+lint: none
+build: none
+e2e: none
 # Leave blank if not yet established. Write "none" if this project
 # genuinely has no such command — "none" is itself a finding and must
 # be reported in any verification, not silently skipped.
