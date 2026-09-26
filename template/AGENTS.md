@@ -12,7 +12,10 @@ warning, so anything the next agent needs must already be in a file.
 This file has two parts. The framework, from here down to "Project
 instructions", is the same in every learning project. "Project instructions"
 at the end belongs to this project: written during Setup, changed afterwards
-only when the learner asks. Project instructions win on how to teach. They
+only when the learner asks. When the learner agrees to a lasting change in how
+you teach or present things, that counts as asking: add it to Project
+instructions right away, because the next agent reads that section and may
+never see this conversation. Project instructions win on how to teach. They
 never switch off the memory rules, the read-only rule for materials/sources/,
 or the English rule for this file and memory/.
 
@@ -120,6 +123,10 @@ ask whether to return to normal.
 A conversation can end mid-sentence when quota runs out. Update memory the
 moment state changes; never save it for the end.
 
+Every date and time you write into a file comes from the system clock at the
+moment you write it. Run the command again each time; never estimate from an
+earlier reading.
+
 | File | When | How |
 |---|---|---|
 | memory/handoff.md | a topic is finished, the next step or mode changes, a decision is made | overwrite |
@@ -141,6 +148,8 @@ to date right away.
   when the learner names it. When new files appear, read them and update the
   source list in Project instructions.
 - materials/generated/: what you produce for the learner. Edit in place.
+- materials/generated/blackboard.md: the current teaching. See "The
+  blackboard".
 - materials/generated/obsidian/: notes in Obsidian format; the learner opens
   this folder as a vault. How notes are named and linked is up to Project
   instructions. Obsidian itself requires:
@@ -148,6 +157,25 @@ to date right away.
   - never put `[[ ]]` inside `$$ $$` math;
   - no `/ \ : * ? " < > |` in file names;
   - no links inside code blocks.
+
+## The blackboard
+
+Chat panels (Claude Code in VS Code, agents in a terminal) do not render
+LaTeX, and long teaching scrolls away. So all teaching goes on
+materials/generated/blackboard.md:
+
+- The current problem, explanations, derivations, worked examples, and
+  feedback on the learner's answers. All math in LaTeX: `$...$` inline,
+  `$$...$$` for display.
+- Overwrite it for each new problem or topic. Anything worth keeping goes
+  into materials/generated/ or the Obsidian notes.
+- Chat carries only short messages: a question to the learner, a quick
+  reply, or a note that something new is on the blackboard, in the human
+  language. No LaTeX in chat; a plain Unicode symbol such as x₁ is fine.
+- .vscode/settings.json makes VS Code open blackboard.md as a rendered
+  preview, which refreshes whenever the file changes. If the learner sees raw
+  source, they have the source tab open: right-click the tab, "Reopen Editor
+  With...", "Markdown Preview".
 
 ## Language
 

@@ -44,7 +44,8 @@ cp -r LearningProject/template/. ~/learning/my-topic/
 ```
 
 3. Put your material (books, slides, past papers) into `materials/sources/`.
-4. Open an agent in the new folder and say anything, for example "hi".
+4. Open the new folder in VS Code, start an agent there, and say anything,
+   for example "hi".
 5. It asks which language you want, then whether this is a new subject or one
    you are moving from a Claude Project. Choose new, and answer a few
    questions about your goal and how you like to learn.
@@ -94,8 +95,13 @@ If your project instructions define their own modes, those are used instead.
 | `CLAUDE.md` | Points Claude Code to `AGENTS.md` | Nobody; leave it as it is |
 | `materials/sources/` | Your original material | You. Agents only read it |
 | `materials/generated/` | Things the agent makes for you: notes, exercises, summaries | The agent |
+| `materials/generated/blackboard.md` | The blackboard: the current teaching, with math shown properly | The agent |
 | `materials/generated/obsidian/` | Notes you can open as an Obsidian vault | The agent |
 | `memory/` | Where you are, what you know, decisions, to-dos, conversation summaries | The agent, automatically |
+
+The agent teaches on the blackboard and keeps the chat for short messages,
+because the chat window cannot show math formulas and long explanations
+scroll away. In VS Code the blackboard opens already rendered.
 
 Files meant for the AI (`AGENTS.md` and `memory/`) are in English. Everything
 meant for you is in the language you chose.

@@ -1,0 +1,7 @@
+{
+  // Open the blackboard as a rendered Markdown preview so LaTeX displays.
+  "workbench.editorAssociations": {
+    "**/blackboard.md": "vscode.markdown.preview.editor"
+  },
+  "markdown.math.enabled": true
+}

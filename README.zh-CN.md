@@ -35,7 +35,7 @@ cp -r LearningProject/template/. ~/learning/my-topic/
 ```
 
 3. 把你的资料（课本、幻灯片、历年真题）放进 `materials/sources/`。
-4. 在新文件夹里打开一个 Agent，随便说一句话，例如「hi」。
+4. 用 VS Code 打开新文件夹，在里面打开一个 Agent，随便说一句话，例如「hi」。
 5. 它会先问你要用什么语言，再问这是新主题，还是从 Claude Project 搬过来的。选「新主题」，然后回答几个关于你的目标、你喜欢怎么学的问题。
 6. 它会给你看一份简短的摘要，说明它打算怎么教你。你说没问题之后，就可以开始学了。
 
@@ -75,8 +75,11 @@ cp -r LearningProject/template/. ~/learning/my-topic/
 | `CLAUDE.md` | 让 Claude Code 去读 `AGENTS.md` | 不用动它 |
 | `materials/sources/` | 你的原始资料 | 你。Agent 只会读 |
 | `materials/generated/` | Agent 帮你做的东西：笔记、练习题、摘要 | Agent |
+| `materials/generated/blackboard.md` | 黑板：当前的教学内容，数学公式会正常显示 | Agent |
 | `materials/generated/obsidian/` | 可以直接用 Obsidian 打开的笔记 | Agent |
 | `memory/` | 学到哪里、你懂什么、做过的决定、待办、对话摘要 | Agent，自动更新 |
+
+Agent 会在黑板上教你，对话里只留简短的消息。因为对话窗口显示不了数学公式，长的讲解也会被往上滚走。在 VS Code 里，黑板一打开就是排版好的样子。
 
 给 AI 看的文件（`AGENTS.md` 和 `memory/`）用英文。给你看的东西，都用你选的语言。
 

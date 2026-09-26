@@ -34,9 +34,13 @@ template/
                        "Project instructions", this project's own tutor spec
   CLAUDE.md            "@AGENTS.md" only (Claude Code). OpenCode and DeepSeek
                        Harness read AGENTS.md directly.
+  .vscode/settings.json  Opens blackboard.md as a rendered Markdown preview
   materials/
     sources/           The learner's originals (read-only)
     generated/         What agents produce (human-facing, edited in place)
+      blackboard.md    All teaching (problem, explanation, derivation,
+                       feedback), math in LaTeX; overwritten per problem.
+                       Chat carries only short messages, no LaTeX.
       obsidian/        Obsidian-format notes; opened as a vault
   memory/
     handoff.md         Current state: where learning stands, next step,
@@ -117,20 +121,42 @@ one course.
    language, and the agent teaches the way the original Project did.
 
 ## Next Steps
-1. Install OpenCode and DeepSeek Harness (neither is installed on this machine
+1. Learner's first real project, D:\Learning\MATH2121 (Claude Code, new path,
+   2026-09-26), showed acceptance 1 and 2 in its files: language asked first,
+   draft confirmed before writing, exam date stored absolute, all memory
+   files updated unprompted, the blackboard convention written into Project
+   instructions. Still open there: close Claude Code and start a fresh one to
+   check the pickup (acceptance 3 with the same agent), and confirm the
+   timestamp fix on a project adopted after this change.
+2. Install OpenCode and DeepSeek Harness (neither is installed on this machine
    as of 2026-09-26).
-2. Run acceptance 1-8 with the real agents. Also confirm the template guard
-   holds for OpenCode and DeepSeek Harness inside this repo; only Claude Code
-   has been probed.
+3. Run the remaining acceptance items with the real agents. Also confirm the
+   template guard holds for OpenCode and DeepSeek Harness inside this repo;
+   only Claude Code has been probed.
 
 ## Open Questions
 - Can OpenCode and DeepSeek Harness read PDFs in materials/sources/? Claude
-  Code can (20 pages per read). If not, sources may need converting to text
-  on adoption.
+  Code can (20 pages per read), and in MATH2121 it extracted text with pypdf
+  instead. If the others cannot, sources may need converting to text on
+  adoption.
 
 ## Known Annoyances
 
 ## Recent Decisions
+- Every timestamp is read from the system clock at the moment it is written,
+  not only at session start: in MATH2121 handoff.md said "Updated: 23:40"
+  while the file was written at 23:05 and the clock read 23:08.
+- All teaching goes on materials/generated/blackboard.md, in every subject,
+  with .vscode/settings.json opening it as a rendered preview; chat keeps only
+  short messages. The Claude Code chat panel in VS Code and terminal agents
+  do not render LaTeX, and the learner asked for all generated teaching on
+  the board, not only math. Taken from the working setup the agent
+  built in MATH2121 (which used 黑板.md); the template name is English
+  because the template serves every language.
+- A lasting change the learner agrees to (how to teach or present) goes into
+  Project instructions at once, since the next agent always loads that
+  section but reads decisions.md only when an earlier choice matters. The
+  MATH2121 agent already did this unprompted; the rule makes it explicit.
 - Project instructions live in a section of AGENTS.md, not a separate file:
   OpenCode and DeepSeek Harness do not resolve imports, so a separate file
   would load only if the agent remembered to read it. DeepSeek Harness caps
