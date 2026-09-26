@@ -17,7 +17,7 @@
 1. 下載這個 repository：
 
 ```
-git clone <repository-url>
+git clone https://github.com/ctyson0606/LearningProject.git
 ```
 
 2. 在這個 repository **外面**開一個新資料夾，把 `template/` 裡面的所有東西複製進去。Windows（PowerShell）：

@@ -25,7 +25,7 @@ suddenly, you lose at most the last few minutes.
 1. Download this repository:
 
 ```
-git clone <repository-url>
+git clone https://github.com/ctyson0606/LearningProject.git
 ```
 
 2. Make a new folder **outside** this repository, and copy everything inside
