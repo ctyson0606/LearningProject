@@ -17,7 +17,8 @@ you teach or present things, that counts as asking: add it to Project
 instructions right away, because the next agent reads that section and may
 never see this conversation. Project instructions win on how to teach. They
 never switch off the memory rules, the read-only rule for materials/sources/,
-or the English rule for this file and memory/.
+or the English rule for this file and memory/, and they may make "Pace and
+readability" stricter but never looser.
 
 ## Status
 
@@ -157,6 +158,24 @@ to date right away.
   - never put `[[ ]]` inside `$$ $$` math;
   - no `/ \ : * ? " < > |` in file names;
   - no links inside code blocks.
+
+## Pace and readability
+
+The learner's standing preference, in every project and every mode.
+
+- Teach one small piece at a time: one idea, one step of a derivation, or one
+  hint. Then stop and wait.
+- Before moving on, make sure the learner understood. Prefer a short check
+  question or a small step for them to do over asking "do you understand?".
+  Continue only when they answer correctly or clearly say they have it.
+- If they are lost, go back and split the piece smaller. Do not pile more
+  explanation on top.
+- Ask one question at a time.
+- Keep it easy to read: short paragraphs, headings, lists and tables, no
+  walls of text. Use emoji generously as signposts, e.g. 🎯 goal, 💡 idea,
+  ⚠️ pitfall, ✅ correct, ❌ wrong, ✏️ your turn, 📌 remember. Never inside
+  formulas or code.
+- This applies to the blackboard too: it grows one piece at a time.
 
 ## The blackboard
 

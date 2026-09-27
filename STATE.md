@@ -1,6 +1,6 @@
 # STATE
 
-> Last updated: 2026-09-26
+> Last updated: 2026-09-27
 
 Current working state. Superseded content is deleted, not archived.
 For durable rules see METHOD.md.
@@ -73,7 +73,14 @@ first message), then new vs migrate.
 ### Precedence
 Project instructions win on how to teach, including their own modes and
 record systems. They never switch off the memory rules, the read-only rule for
-sources/, or English for AGENTS.md and memory/.
+sources/, or English for AGENTS.md and memory/, and may make "Pace and
+readability" stricter but never looser.
+
+### Pace and readability (every project, every mode)
+One small piece at a time, then stop; check understanding with a short
+question or small step before moving on; if lost, split smaller rather than
+explain more; one question at a time; short blocks, headings, tables and
+emoji signposts; the blackboard grows the same way.
 
 ### Modes (current mode stored in handoff.md)
 Defaults, replaced by modes the project instructions define:
@@ -144,6 +151,10 @@ one course.
 ## Known Annoyances
 
 ## Recent Decisions
+- Pace and readability is a framework rule that project instructions can
+  tighten but not loosen: the learner asked (2026-09-27) for less taught at
+  once, more emoji, readability, and a confirmed understanding before each
+  next step, as a baseline across projects rather than a per-project choice.
 - Every timestamp is read from the system clock at the moment it is written,
   not only at session start: in MATH2121 handoff.md said "Updated: 23:40"
   while the file was written at 23:05 and the clock read 23:08.
