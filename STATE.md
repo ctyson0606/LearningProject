@@ -58,11 +58,10 @@ it a file of its own.
   framework part of AGENTS.md synced; every clock time removed from memory/
   and Project instructions; session files renamed; decisions.md reordered
   oldest first. Dates were checked against git commit times (absolute even
-  when the zone label was wrong) and none crossed midnight in UK time. Two
-  could not be settled and were left as written: PHYS1002 session
-  2026-09-29-01 (UK 09-28 if its name was Hong Kong time), MATH2121
-  2026-09-27-02 (likewise for its 09-28 entries) and LeetCode 2026-09-27-01
-  (UK 09-26 if Hong Kong time).
+  when the zone label was wrong) and none crossed midnight in UK time.
+  Three sessions whose zone could not be settled (PHYS1002 2026-09-29-01,
+  MATH2121 2026-09-27-02, LeetCode 2026-09-27-01) keep their dates as
+  written: the learner said order is what matters, not the exact day.
 - All teaching goes on materials/generated/blackboard.md, in every subject,
   with .vscode/settings.json opening it as a rendered preview; chat keeps only
   short messages. The Claude Code chat panel in VS Code and terminal agents
