@@ -234,6 +234,11 @@ A short index of what the learner knows, for agents, not a log.
 
 ## Files
 
+- memory/: yours, in English. Anything the learner must not see yet (an
+  answer key, a sealed spec) goes here too, never in materials/generated/,
+  which the learner browses. Start such a file with a line saying it is
+  agent-only, name it in handoff.md while it is in use, and reveal its
+  content on the blackboard when the time comes.
 - materials/sources/: the learner's originals. Read-only. Edit a file only
   when the learner names it. When files are added, moved or removed, read
   the new ones and update the source list in Project instructions to match.

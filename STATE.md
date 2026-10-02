@@ -38,6 +38,13 @@ it a file of its own.
 ## Known Annoyances
 
 ## Recent Decisions
+- Agent-only content (answer keys, sealed specs) lives in memory/, in
+  English, never in materials/generated/, which the learner browses; it is
+  revealed on the blackboard (2026-10-02, learner approved). PHYS1002 already
+  kept its mock-test key in memory/; LeetCode's Track C sealed spec moved from
+  materials/generated/TrackC-封存規格.md to memory/trackc-sealed-spec.md
+  (no round had been run, so no file existed). COMP2012H's AGENTS.md is now
+  64,908 bytes, about 600 under DeepSeek Harness's 64 KiB cap.
 - handoff.md has a fixed shape (Now, Next step, Paused; at most 40 lines) and
   is rewritten whole; progress.md is one row per topic plus recurring
   patterns; Project instructions hold only what stays true, and a replaced

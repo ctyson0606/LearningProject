@@ -53,6 +53,9 @@ template/
                        recurring patterns; points to project records if any
     decisions.md       Decisions and their reasons, oldest first
     todo.md            To-dos
+    <agent-only>.md    Anything the learner must not see yet (answer keys,
+                       sealed specs); first line says agent-only, named in
+                       handoff.md while in use, revealed on the blackboard
     sessions/          One summary per conversation:
                        YYYY-MM-DD-NN-<agent>.md (NN = order within the day)
 ```
