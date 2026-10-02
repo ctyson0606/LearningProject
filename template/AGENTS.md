@@ -16,9 +16,9 @@ only when the learner asks. When the learner agrees to a lasting change in how
 you teach or present things, that counts as asking: add it to Project
 instructions right away, because the next agent reads that section and may
 never see this conversation. Project instructions win on how to teach. They
-never switch off the memory rules, the read-only rule for materials/sources/,
-or the English rule for this file and memory/, and they may make "Pace and
-readability" stricter but never looser.
+never switch off the memory rules, the UK date rule, the read-only rule for
+materials/sources/, or the English rule for this file and memory/, and they
+may make "Pace and readability" stricter but never looser.
 
 ## Status
 
@@ -34,18 +34,55 @@ Human language:  the language for conversation and everything the learner reads
 
 ## On every start
 
-1. Get today's date and the current time from the system clock (a shell
-   command). Never guess them.
+1. Get today's UK date with the command in "Time: UK dates only". Never
+   guess it.
 2. If Setup is not `done`, run Setup before anything else.
 3. Read memory/handoff.md, memory/progress.md, memory/todo.md and the newest
-   file in memory/sessions/. Read memory/decisions.md when an earlier choice
-   matters.
+   file in memory/sessions/ (the last one in name order). Read
+   memory/decisions.md when an earlier choice matters.
 4. Tell the learner, in the human language: the topic, where learning stands,
    what was discussed last time, the current mode (with days left if there is
    a deadline), and the next step.
-5. Create this session's file: memory/sessions/YYYY-MM-DD-HHMM-<agent>.md,
-   where <agent> is `claude-code`, `opencode`, `deepseek-harness`, or your
-   own name.
+5. Create this session's file: memory/sessions/YYYY-MM-DD-NN-<agent>.md.
+   YYYY-MM-DD is today's UK date. NN is two digits: 01 for the first session
+   file of that date, otherwise one more than the highest number already
+   there for it, whichever agent wrote it. <agent> is `claude-code`,
+   `opencode`, `deepseek-harness`, or your own name.
+
+## Time: UK dates only
+
+The learner works on more than one computer, and they are set to different
+time zones. So this project records dates only, never clock times, and every
+date is the UK date (Europe/London), whatever the computer you run on is set
+to. There are no exceptions, and Project instructions cannot change this.
+
+- Get today's UK date with this command, run again every time you write a
+  date:
+
+  ```
+  TZ='GMT0BST,M3.5.0/1,M10.5.0' date '+%Y-%m-%d %Z'
+  ```
+
+  It works in bash and zsh on macOS, Linux, and Git Bash on Windows. The
+  output must end in `BST` or `GMT`. In PowerShell on Windows, use
+  `[TimeZoneInfo]::ConvertTimeBySystemTimeZoneId([DateTime]::UtcNow, 'GMT Standard Time').ToString('yyyy-MM-dd')`.
+- Never take the date from a bare `date` or `Get-Date`, from a date given in
+  your own context, or from any other clock: those show the computer's own
+  zone, which can already be the next day. Never use `TZ=Europe/London`
+  either: Git Bash does not know that name and silently prints UTC.
+- Write dates as YYYY-MM-DD. Never write a clock time (HH:MM) in any file,
+  file name or message, deadlines included.
+- Order takes the place of the clock: session files are numbered within the
+  day, and inside every file new entries go below older ones, so line order
+  is the order things happened.
+- When the learner gives a date or deadline in another zone, convert it to
+  the UK date and write that date only. A Hong Kong time before 07:00 (before
+  08:00 in winter) is still the previous UK day.
+- "Today", "days left" and "the deadline has passed" are judged by the UK
+  date.
+- For a git commit, put the same TZ in front so git's own dates are UK too:
+  `TZ='GMT0BST,M3.5.0/1,M10.5.0' git commit ...` (in PowerShell, set
+  `$env:TZ` to the same string first, in the same command).
 
 ## Setup
 
@@ -116,22 +153,22 @@ instructions define their own modes, use those instead of the defaults below.
 - **practice**: nothing new. Set exercises, mark them, explain the mistakes.
 
 The learner switches mode with one sentence. Store any deadline as an
-absolute date (YYYY-MM-DD), never as "in 3 days". Once a deadline has passed,
-ask whether to return to normal.
+absolute UK date (YYYY-MM-DD, no clock time), never as "in 3 days". Once a
+deadline has passed, ask whether to return to normal.
 
 ## Memory: write as you go
 
 A conversation can end mid-sentence when quota runs out. Update memory the
 moment state changes; never save it for the end.
 
-Every date and time you write into a file comes from the system clock at the
-moment you write it. Run the command again each time; never estimate from an
-earlier reading.
+Every date you write into a file is the UK date from the command in "Time: UK
+dates only", run at the moment you write it. Run it again each time; never
+reuse an earlier reading, because a session can run past midnight.
 
 | File | When | How |
 |---|---|---|
 | memory/handoff.md | a topic is finished, the next step or mode changes, a decision is made | overwrite |
-| memory/sessions/<this session>.md | the same moments | append a few lines |
+| memory/sessions/<this session>.md | the same moments | append a few lines, each starting with the UK date |
 | memory/progress.md | the learner shows they understand something, struggles, or gets it wrong | edit |
 | memory/decisions.md | a decision is made about how or what to learn | add, with the reason |
 | memory/todo.md | a to-do appears or is done | edit |

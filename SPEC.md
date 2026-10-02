@@ -47,13 +47,13 @@ template/
       obsidian/        Obsidian-format notes; opened as a vault
   memory/
     handoff.md         Current state: where learning stands, next step,
-                       current mode (+ absolute deadline date), last agent, time
+                       current mode (+ absolute deadline date), last agent, date
     progress.md        Terse AI-facing index of what the learner knows and
                        where they struggle; points to project records if any
-    decisions.md       Decisions and their reasons
+    decisions.md       Decisions and their reasons, oldest first
     todo.md            To-dos
     sessions/          One summary per conversation:
-                       YYYY-MM-DD-HHMM-<agent>.md
+                       YYYY-MM-DD-NN-<agent>.md (NN = order within the day)
 ```
 
 ## Setup (first start, while Status says pending)
@@ -74,9 +74,18 @@ first message), then new vs migrate.
 
 ## Precedence
 Project instructions win on how to teach, including their own modes and
-record systems. They never switch off the memory rules, the read-only rule for
-sources/, or English for AGENTS.md and memory/, and may make "Pace and
-readability" stricter but never looser.
+record systems. They never switch off the memory rules, the UK date rule, the
+read-only rule for sources/, or English for AGENTS.md and memory/, and may
+make "Pace and readability" stricter but never looser.
+
+## Time (every project, no exceptions)
+Dates only, never clock times, in files, file names, deadlines and messages.
+Every date is the UK date (Europe/London), read fresh from a command that
+forces that zone, whatever the computer is set to; git commits run under the
+same zone. Order replaces the clock: session files are numbered within the
+day, and entries inside a file go oldest first. Dates given in another zone
+are converted to the UK date. Learner's request, 2026-10-02: their computers
+run in different zones (Windows UK, Mac Hong Kong).
 
 ## Pace and readability (every project, every mode)
 One small piece at a time, then stop; check understanding with a short
@@ -89,8 +98,8 @@ Defaults, replaced by modes the project instructions define:
 - normal: teach as the project instructions say
 - sprint: e.g. "exam in 3 days"; high-yield exam content only, many exercises
 - practice: nothing new; set, mark and explain exercises
-Deadlines are stored as absolute dates; once passed, the agent asks whether to
-return to normal.
+Deadlines are stored as absolute UK dates; once passed, the agent asks whether
+to return to normal.
 
 ## Update rules
 | Content | How |
