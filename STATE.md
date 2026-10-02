@@ -23,10 +23,6 @@ it a file of its own.
    on the Mac: its first session there must name its file
    YYYY-MM-DD-NN-<agent>.md with the UK date and write no clock times; the
    TZ command has only been run on Windows.
-4. PHYS1002/materials/sources/SourceOfPastInfo/ holds an old copy of the
-   template, AGENTS.md included (still HHMM session names, no guard). Agents
-   that load nested instruction files may pick it up when they read there.
-   It is the learner's source folder, so ask before moving or deleting it.
 2. Install OpenCode and DeepSeek Harness (neither is installed on this machine
    as of 2026-09-26).
 3. Run the remaining acceptance items with the real agents. Also confirm the
