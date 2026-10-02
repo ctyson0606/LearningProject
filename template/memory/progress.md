@@ -1,8 +1,11 @@
 # Progress
 
-What the learner understands and where they struggle. One terse line each,
-dated. Move a line from Struggles to Understands once it is solid.
+One row per topic; update the row, never add one per answer. Status: ✅ solid,
+🟡 shaky, ❌ not yet. See AGENTS.md, "memory/progress.md".
 
-## Understands
+| Topic | Status | Note | Updated |
+|---|---|---|---|
 
-## Struggles
+## Patterns
+
+Recurring mistakes or habits only, one line each, with how many times seen.

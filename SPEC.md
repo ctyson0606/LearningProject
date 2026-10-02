@@ -46,10 +46,11 @@ template/
                        Chat carries only short messages, no LaTeX.
       obsidian/        Obsidian-format notes; opened as a vault
   memory/
-    handoff.md         Current state: where learning stands, next step,
-                       current mode (+ absolute deadline date), last agent, date
-    progress.md        Terse AI-facing index of what the learner knows and
-                       where they struggle; points to project records if any
+    handoff.md         Current state only, rewritten whole, at most 40
+                       lines: Updated, Agent, Mode, Deadline; Now, Next
+                       step, Paused
+    progress.md        AI-facing index: one row per topic (✅/🟡/❌) plus
+                       recurring patterns; points to project records if any
     decisions.md       Decisions and their reasons, oldest first
     todo.md            To-dos
     sessions/          One summary per conversation:
@@ -76,7 +77,9 @@ first message), then new vs migrate.
 Project instructions win on how to teach, including their own modes and
 record systems. They never switch off the memory rules, the UK date rule, the
 read-only rule for sources/, or English for AGENTS.md and memory/, and may
-make "Pace and readability" stricter but never looser.
+make "Pace and readability" stricter but never looser. They hold only what
+stays true for the whole course; plans and progress live in memory/, and a
+rule that replaces another is rewritten in place.
 
 ## Time (every project, no exceptions)
 Dates only, never clock times, in files, file names, deadlines and messages.

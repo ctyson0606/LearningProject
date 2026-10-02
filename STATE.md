@@ -38,6 +38,20 @@ it a file of its own.
 ## Known Annoyances
 
 ## Recent Decisions
+- handoff.md has a fixed shape (Now, Next step, Paused; at most 40 lines) and
+  is rewritten whole; progress.md is one row per topic plus recurring
+  patterns; Project instructions hold only what stays true, and a replaced
+  rule is rewritten in place (2026-10-02, learner approved). Reason: in
+  D:\Learning agents patched handoff.md instead of overwriting it (MATH2121
+  contradicted itself, Robomaster had two sections fused), logged every
+  answer in progress.md (Robomaster 20 KB), and left plans and superseded
+  rules in Project instructions (MATH2121 kept both "LaTeX in conversation"
+  and "no LaTeX in chat"). Rolled out the same day: framework synced, all
+  twelve files rewritten to the new shapes. Project instructions cleaned in
+  MATH2121 (LaTeX contradiction, learner-level snapshot, current plan, deleted
+  sources, PDF reading), Robomaster (learner level, code-project facts moved
+  out of handoff.md) and PHYS1002 (cheat-sheet regeneration moved out of
+  handoff.md, the duplicate no-clock-times rule dropped), learner approved.
 - Pace and readability is a framework rule that project instructions can
   tighten but not loosen: the learner asked (2026-09-27) for less taught at
   once, more emoji, readability, and a confirmed understanding before each
@@ -50,7 +64,7 @@ it a file of its own.
   already banned clock times. Session files became YYYY-MM-DD-NN-<agent>.md,
   and decisions.md went oldest first, because agents appended at the bottom
   in three of six projects although it said newest first.
-- 2026-10-02 rollout to all six projects in D:\Learning, uncommitted there:
+- 2026-10-02 rollout to all six projects in D:\Learning, committed there (no push):
   framework part of AGENTS.md synced; every clock time removed from memory/
   and Project instructions; session files renamed; decisions.md reordered
   oldest first. Dates were checked against git commit times (absolute even

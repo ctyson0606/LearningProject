@@ -20,6 +20,13 @@ never switch off the memory rules, the UK date rule, the read-only rule for
 materials/sources/, or the English rule for this file and memory/, and they
 may make "Pace and readability" stricter but never looser.
 
+Project instructions hold only what stays true for the whole course: how to
+teach, the learner's rules, file conventions, the source list, exam dates.
+Anything that moves as learning moves (the current plan, where the learner
+stands, what they know now) goes in memory/handoff.md or memory/progress.md,
+never here. When a new rule replaces an old one, rewrite or delete the old
+one in place; never leave both standing.
+
 ## Status
 
 Setup: pending
@@ -40,10 +47,14 @@ Human language:  the language for conversation and everything the learner reads
 3. Read memory/handoff.md, memory/progress.md, memory/todo.md and the newest
    file in memory/sessions/ (the last one in name order). Read
    memory/decisions.md when an earlier choice matters.
-4. Tell the learner, in the human language: the topic, where learning stands,
+4. If memory/handoff.md is longer than its limit, has sections its shape
+   does not have, or disagrees with the newest session file, rewrite it first
+   (see "memory/handoff.md"). Do the same for memory/progress.md if it is not
+   in its shape.
+5. Tell the learner, in the human language: the topic, where learning stands,
    what was discussed last time, the current mode (with days left if there is
    a deadline), and the next step.
-5. Create this session's file: memory/sessions/YYYY-MM-DD-NN-<agent>.md.
+6. Create this session's file: memory/sessions/YYYY-MM-DD-NN-<agent>.md.
    YYYY-MM-DD is today's UK date. NN is two digits: 01 for the first session
    file of that date, otherwise one more than the highest number already
    there for it, whichever agent wrote it. <agent> is `claude-code`,
@@ -111,7 +122,8 @@ instructions as a draft line), and ask only what is still missing.
    4. How to check they understood: quizzes, exercises, explaining it back,
       or no checking.
 3. Draft Project instructions in English covering at least: topic, goal
-   (with exam date), learner level, method, checking, and one line per file
+   (with exam date), the learner's level at Setup (later changes go to
+   memory/progress.md), method, checking, and one line per file
    in materials/sources/. Add any rule the learner states along the way.
 4. Show the learner a summary in the human language. Write the draft into
    Project instructions only after they confirm.
@@ -167,24 +179,64 @@ reuse an earlier reading, because a session can run past midnight.
 
 | File | When | How |
 |---|---|---|
-| memory/handoff.md | a topic is finished, the next step or mode changes, a decision is made | overwrite |
+| memory/handoff.md | a topic is finished, the next step or mode changes, a decision is made | rewrite the whole file |
 | memory/sessions/<this session>.md | the same moments | append a few lines, each starting with the UK date |
-| memory/progress.md | the learner shows they understand something, struggles, or gets it wrong | edit |
-| memory/decisions.md | a decision is made about how or what to learn | add, with the reason |
-| memory/todo.md | a to-do appears or is done | edit |
-
-memory/progress.md is a terse index for agents. If Project instructions keep
-their own records for the learner (error logs, note cards), those live in
-materials/generated/ and are the main record; progress.md points to them.
+| memory/progress.md | a topic's status changes, or a mistake recurs | update that row or line |
+| memory/decisions.md | a decision is made about how or what to learn | add at the bottom, with the reason |
+| memory/todo.md | a to-do appears or is done | add it, or delete it when done |
 
 When the learner says "handoff" (in any language), bring every file above up
 to date right away.
 
+### memory/handoff.md
+
+The next agent reads it first and trusts it, so it holds only what is true
+now, and stays short.
+
+- Rewrite the whole file every time: read it, then write it again from
+  scratch. Never append to it or patch one line of it; that is how finished
+  steps and contradictions pile up.
+- At most 40 lines, in exactly this shape:
+
+  ```
+  # Handoff
+  Updated: YYYY-MM-DD (session YYYY-MM-DD-NN-<agent>)
+  Agent: <agent>
+  Mode: <mode>
+  Deadline: YYYY-MM-DD (<what>), or none
+
+  ## Now
+  At most 5 lines: what is on the blackboard, what the learner is working
+  on, what answer you are waiting for.
+
+  ## Next step
+  1-3 numbered steps.
+
+  ## Paused
+  One line per paused thread: what, where it stopped, where its notes are.
+  ```
+
+- What is finished leaves the file. How it got done is in the session files.
+
+### memory/progress.md
+
+A short index of what the learner knows, for agents, not a log.
+
+- One row per topic in a table: Topic, Status, Note, Updated. Status is
+  ✅ solid, 🟡 shaky, or ❌ not yet. When a topic's status changes, update its
+  row; never add a row for a single answer.
+- Under "Patterns", one line per recurring mistake or habit, with how many
+  times it has been seen. Update the count; do not add the same pattern again.
+- The details of single answers go in the session file. If Project
+  instructions keep their own records for the learner (error logs, note
+  cards), those live in materials/generated/ and are the main record;
+  progress.md points to them.
+
 ## Files
 
 - materials/sources/: the learner's originals. Read-only. Edit a file only
-  when the learner names it. When new files appear, read them and update the
-  source list in Project instructions.
+  when the learner names it. When files are added, moved or removed, read
+  the new ones and update the source list in Project instructions to match.
 - materials/generated/: what you produce for the learner. Edit in place.
 - materials/generated/blackboard.md: the current teaching. See "The
   blackboard".

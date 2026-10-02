@@ -1,12 +1,14 @@
 # Handoff
 
-Overwritten whenever state changes. See AGENTS.md, "Memory: write as you go".
+Rewritten whole each time, at most 40 lines. See AGENTS.md, "memory/handoff.md".
 
 Updated:
 Agent:
 Mode: normal
 Deadline: none
 
-## Where learning stands
+## Now
 
 ## Next step
+
+## Paused
