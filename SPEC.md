@@ -80,11 +80,19 @@ first message), then new vs migrate.
 
 ## Precedence
 Project instructions win on how to teach, including their own modes and
-record systems. They never switch off the memory rules, the UK date rule, the
-read-only rule for sources/, or English for AGENTS.md and memory/, and may
-make "Pace and readability" stricter but never looser. They hold only what
-stays true for the whole course; plans and progress live in memory/, and a
-rule that replaces another is rewritten in place.
+record systems. They never switch off the memory rules, the UK date rule,
+the one-project-one-session rule, the read-only rule for sources/, or English
+for AGENTS.md and memory/, and may make "Pace and readability" stricter but
+never looser. They hold only what stays true for the whole course; plans and
+progress live in memory/, and a rule that replaces another is rewritten in
+place.
+
+## One project, one session
+An agent edits only the project it runs in; work for another project is done
+by a session opened there. At start it checks for another open session (a
+session file changed in the last 30 minutes) and asks the learner before
+changing anything. Learner's request, 2026-10-04, after two sessions edited
+MATH2121 at once on 2026-10-01.
 
 ## Time (every project, no exceptions)
 Dates only, never clock times, in files, file names, deadlines and messages.

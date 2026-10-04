@@ -38,6 +38,13 @@ it a file of its own.
 ## Known Annoyances
 
 ## Recent Decisions
+- One project, one session (2026-10-04, learner approved): an agent edits
+  only its own project, and at start asks the learner if a session file
+  changed in the last 30 minutes (another session may be open). Reason: on
+  2026-10-01 a session opened in LeetCode-CCFCSP edited MATH2121 while
+  MATH2121's own session was running; a rule was added, removed and replaced,
+  and both logs ended up in one session file. The 30-minute window, rather
+  than "any session today", avoids asking on every quota-driven agent switch.
 - Agent-only content (answer keys, sealed specs) lives in memory/, in
   English, never in materials/generated/, which the learner browses; it is
   revealed on the blackboard (2026-10-02, learner approved). PHYS1002 already

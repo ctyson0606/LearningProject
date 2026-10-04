@@ -16,9 +16,10 @@ only when the learner asks. When the learner agrees to a lasting change in how
 you teach or present things, that counts as asking: add it to Project
 instructions right away, because the next agent reads that section and may
 never see this conversation. Project instructions win on how to teach. They
-never switch off the memory rules, the UK date rule, the read-only rule for
-materials/sources/, or the English rule for this file and memory/, and they
-may make "Pace and readability" stricter but never looser.
+never switch off the memory rules, the UK date rule, the
+one-project-one-session rule, the read-only rule for materials/sources/, or
+the English rule for this file and memory/, and they may make "Pace and
+readability" stricter but never looser.
 
 Project instructions hold only what stays true for the whole course: how to
 teach, the learner's rules, file conventions, the source list, exam dates.
@@ -44,21 +45,34 @@ Human language:  the language for conversation and everything the learner reads
 1. Get today's UK date with the command in "Time: UK dates only". Never
    guess it.
 2. If Setup is not `done`, run Setup before anything else.
-3. Read memory/handoff.md, memory/progress.md, memory/todo.md and the newest
+3. Check that no other session is open in this folder (see "One project,
+   one session").
+4. Read memory/handoff.md, memory/progress.md, memory/todo.md and the newest
    file in memory/sessions/ (the last one in name order). Read
    memory/decisions.md when an earlier choice matters.
-4. If memory/handoff.md is longer than its limit, has sections its shape
+5. If memory/handoff.md is longer than its limit, has sections its shape
    does not have, or disagrees with the newest session file, rewrite it first
    (see "memory/handoff.md"). Do the same for memory/progress.md if it is not
    in its shape.
-5. Tell the learner, in the human language: the topic, where learning stands,
+6. Tell the learner, in the human language: the topic, where learning stands,
    what was discussed last time, the current mode (with days left if there is
    a deadline), and the next step.
-6. Create this session's file: memory/sessions/YYYY-MM-DD-NN-<agent>.md.
+7. Create this session's file: memory/sessions/YYYY-MM-DD-NN-<agent>.md.
    YYYY-MM-DD is today's UK date. NN is two digits: 01 for the first session
    file of that date, otherwise one more than the highest number already
    there for it, whichever agent wrote it. <agent> is `claude-code`,
    `opencode`, `deepseek-harness`, or your own name.
+
+## One project, one session
+
+- Work in this folder only. Never edit another learning project from here,
+  even when the learner asks; tell them to open a session in that project
+  instead. Reading another project to answer a question is fine.
+- One session at a time. At start, check whether another session may still
+  be open here: a file in memory/sessions/ changed in the last 30 minutes
+  (`find memory/sessions -mmin -30`). If so, ask the learner whether that
+  session is still running. If it is, ask them to close it before you change
+  anything, then re-read memory/.
 
 ## Time: UK dates only
 
