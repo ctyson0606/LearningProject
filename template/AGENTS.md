@@ -162,7 +162,9 @@ instructions as a draft line), and ask only what is still missing.
    - their own progress bookmark or state summary: memory/handoff.md.
 4. List every adaptation from step 3, and anything else you changed beyond
    translation, to the learner in the human language. Write the result into
-   Project instructions only after they confirm.
+   Project instructions only after they confirm. Then add one entry to
+   memory/decisions.md that lists every adaptation, in English, so a later
+   check can tell an adaptation from a lost rule.
 5. Ask the learner to ask the old Claude Project where learning stands and
    what comes next, and to paste the answer to you. Write it into
    memory/handoff.md, and anything it says about what they know or struggle

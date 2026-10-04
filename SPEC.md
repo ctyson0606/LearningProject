@@ -73,10 +73,11 @@ first message), then new vs migrate.
   themselves (originals -> sources/, earlier AI output -> generated/). Agent
   translates to English without dropping rules, rewrites claude.ai-only parts
   (knowledge search, read-only /mnt/project + present_files, "no filesystem,
-  download it", other Projects, progress bookmarks), lists every adaptation
-  in the human language, writes on confirmation. Current state comes from the
-  learner asking the old Project "where are we, what next" and pasting the
-  answer, which seeds handoff.md and progress.md.
+  download it", other Projects, progress bookmarks), lists every adaptation in
+  the human language, writes on confirmation and records the list in
+  decisions.md. Current state comes from the learner asking the old Project
+  "where are we, what next" and pasting the answer, which seeds handoff.md and
+  progress.md.
 
 ## Precedence
 Project instructions win on how to teach, including their own modes and

@@ -23,9 +23,19 @@ it a file of its own.
    on the Mac: its first session there must name its file
    YYYY-MM-DD-NN-<agent>.md with the UK date and write no clock times; the
    TZ command has only been run on Windows.
-2. Install OpenCode and DeepSeek Harness (neither is installed on this machine
+2. Acceptance 8, audited 2026-10-04 (Sonnet subagent read the original
+   instructions and the migrated Project instructions in LeetCode-CCFCSP;
+   10 random original rules spot-checked by hand, all present): about 150
+   rules checked, none missing, weakened or changed; English throughout;
+   Status records Traditional Chinese; no claude.ai mechanics left; original
+   sections 1-11 kept in order. Still open: "teaches the way the original did"
+   cannot be judged, because no problem has been taught there yet. Seven
+   claude.ai adaptations were correct but recorded nowhere; on 2026-10-04 they
+   were added to LeetCode-CCFCSP memory/decisions.md, and the template's
+   migrate path now has the agent record the list in decisions.md.
+3. Install OpenCode and DeepSeek Harness (neither is installed on this machine
    as of 2026-09-26).
-3. Run the remaining acceptance items with the real agents. Also confirm the
+4. Run the remaining acceptance items with the real agents. Also confirm the
    template guard holds for OpenCode and DeepSeek Harness inside this repo;
    only Claude Code has been probed.
 
