@@ -43,8 +43,18 @@ it a file of its own.
   revealed on the blackboard (2026-10-02, learner approved). PHYS1002 already
   kept its mock-test key in memory/; LeetCode's Track C sealed spec moved from
   materials/generated/TrackC-封存規格.md to memory/trackc-sealed-spec.md
-  (no round had been run, so no file existed). COMP2012H's AGENTS.md is now
-  64,908 bytes, about 600 under DeepSeek Harness's 64 KiB cap.
+  (no round had been run, so no file existed).
+- 2026-10-04, learner approved: COMP2012H's AGENTS.md had reached 64,908
+  bytes, about 600 under DeepSeek Harness's 64 KiB cap, so its "Past papers
+  and question bank" section (6,308 bytes, reference used only when choosing
+  originals or preparing exams) moved verbatim to memory/past-papers.md,
+  leaving a pointer; AGENTS.md is now 58,945 bytes. The template gained a
+  .gitignore for OS metadata; all six projects got it, the ._*, .DS_Store
+  and .smbdelete* files (MATH2121 59, Robomaster 2) were deleted, and the
+  desktop.ini files in COMP2012H (21) and PHYS1002 (69) sources were untracked
+  but kept on disk. The Mac keeps writing ._* files over the share; git now
+  ignores them and Obsidian hides dotfiles. Executed by a Sonnet subagent,
+  checked independently afterwards.
 - handoff.md has a fixed shape (Now, Next step, Paused; at most 40 lines) and
   is rewritten whole; progress.md is one row per topic plus recurring
   patterns; Project instructions hold only what stays true, and a replaced

@@ -37,6 +37,8 @@ template/
   CLAUDE.md            "@AGENTS.md" only (Claude Code). OpenCode and DeepSeek
                        Harness read AGENTS.md directly.
   .vscode/settings.json  Opens blackboard.md as a rendered Markdown preview
+  .gitignore           OS metadata (._*, .DS_Store, .smbdelete*, desktop.ini,
+                       Thumbs.db) never enters git
   materials/
     sources/           The learner's originals (read-only)
     generated/         What agents produce (human-facing, edited in place)
