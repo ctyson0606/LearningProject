@@ -132,8 +132,8 @@ Learner's review, 2026-10-21: COMP2012H had reached 66,783 bytes.
 
 ## Git
 The agent commits on its own whenever a piece of work is finished, only this
-project's files, never pushing, unless Project instructions say otherwise
-(COMP2012H: only when asked). Commits are never recorded in memory files.
+project's files, never pushing, unless Project instructions say otherwise.
+Commits are never recorded in memory files.
 Learner's review, 2026-10-21: MATH2121 and COMP2012H each invented the
 no-logging rule after commit-logging churn; the learner chose own commits as
 the default.

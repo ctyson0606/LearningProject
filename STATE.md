@@ -42,8 +42,6 @@ it a file of its own.
 4. Run the remaining acceptance items with the real agents. Also confirm the
    template guard holds for OpenCode and DeepSeek Harness inside this repo;
    only Claude Code has been probed.
-5. Left over from the 2026-10-21 rollout (see Recent Decisions): should COMP2012H keep its "commit only when asked"
-   override, now that the framework default is commit on your own?
 
 ## Open Questions
 - The 30-minute open-session check gives false positives: at 15:13 BST on
@@ -71,15 +69,15 @@ it a file of its own.
   Project instructions; progress.md notes about 30 words, rewritten; revealed
   agent-only files are deleted; a Git section (the agent commits on its own
   after each finished piece, never pushes, never records commits in memory;
-  the learner chose own commits as the default; COMP2012H keeps its own
-  "only when asked" rule as an override). Reasons: COMP2012H AGENTS.md was 66,783 bytes
+  the learner chose own commits for every project, COMP2012H included,
+  replacing its 2026-10-09 "only when asked" rule). Reasons: COMP2012H AGENTS.md was 66,783 bytes
   on disk, over DeepSeek Harness's cap; MATH2121 and COMP2012H kept midterm
   dates and sprint rules after the exams; their progress.md notes had become
   logs (12 KB each); COMP2012H had 25 agent-only key files; MATH2121 and
   COMP2012H each invented a git rule after commit-logging churn. Per
   project: COMP2012H §8 and §11 moved verbatim to memory/exam-prep-mode.md and
   memory/knowledge-links.md (now about 56 KB), stale §1 rows removed and
-  §18 Git cut to its override; MATH2121 midterm line and sprint exception and its Git section
+  §18 Git removed; MATH2121 midterm line and sprint exception and its Git section
   removed; both progress.md files rewritten; both decisions.md record it.
   The 22 revealed COMP2012H answer-key files were deleted (learner approved);
   adt-drill-key (unrevealed errata), u3-array-drill-key and u7-drill-key kept.
