@@ -79,6 +79,17 @@ it a file of its own.
   first reply, so a session cut off after one reply leaves a trace; and the
   progress.md note rule now carries a right and a wrong example, because
   every model added a dated "recurred in the midterm" phrase to the note.
+  Retest the same day on the synced framework, DeepSeek V4.1 Flash in both
+  agents: both created the session file before the first reply, ran the
+  size check, wrote no clock times and asked before retiring midterm-only
+  material. The note fix worked in OpenCode ("cost marks in the midterm",
+  no date) but not in Harness ("recurred in the 2026-10-21 midterm").
+  Harness committed after each turn; OpenCode did not commit at all.
+  Learner approved two more template changes, synced into all six
+  projects (not yet retested): the agent checks the Note for a YYYY-MM-DD
+  date before saving and takes it out; and it commits right after every
+  write to memory/, instead of when a piece of work "is finished", which
+  left the decision to the model.
 - 2026-10-21, learner approved after a post-midterm review of all six
   projects (all following the rules: UK dates, session names, sources
   untouched, no cross-project edits, handoff.md within 40 lines). Template

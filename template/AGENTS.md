@@ -259,7 +259,8 @@ A short index of what the learner knows, for agents, not a log.
 - The Note says what is solid and what is still weak now, plus where the log
   is, in at most about 30 words. Rewrite it whole when the row changes; never
   add a dated entry to it, or the row becomes a log. The date belongs only in
-  the Updated column; what happened when goes in the session file.
+  the Updated column; what happened when goes in the session file. Before
+  saving, check the Note: if it contains a date (YYYY-MM-DD), take it out.
   - Right: `Solid: Col/Nul bases. Weak: swap sign in det row ops (mistake 71).`
   - Wrong: `... Weak: swap sign; recurred in the midterm 2026-10-21.`
 - Under "Patterns", one line per recurring mistake or habit, with how many
@@ -334,10 +335,11 @@ materials/generated/blackboard.md:
 
 ## Git
 
-- Commit on your own whenever a piece of work is finished (a problem
-  marked, notes written, memory updated), so nothing is lost if the session
-  stops. Commit only this project's files, never push, and use the TZ prefix
-  from "Time: UK dates only". Project instructions may say otherwise.
+- Commit on your own, right after every write to memory/ (and with it any
+  other files you changed): `git add -A`, then commit with the TZ prefix from
+  "Time: UK dates only". Do not wait until a piece of work feels finished:
+  a session can stop at any moment. Commit only this project's files and
+  never push. Project instructions may say otherwise.
 - Never record commits in memory files: no commit hashes and no "committed"
   lines in handoff.md, session files or progress.md. git log already holds
   them, and a line about a commit is itself a new change left uncommitted.

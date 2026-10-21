@@ -131,7 +131,7 @@ Harness reads at most 65,536 bytes of instruction files and drops the rest.
 Learner's review, 2026-10-21: COMP2012H had reached 66,783 bytes.
 
 ## Git
-The agent commits on its own whenever a piece of work is finished, only this
+The agent commits on its own right after every write to memory/, only this
 project's files, never pushing, unless Project instructions say otherwise.
 Commits are never recorded in memory files.
 Learner's review, 2026-10-21: MATH2121 and COMP2012H each invented the
