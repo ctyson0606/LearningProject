@@ -33,15 +33,18 @@ it a file of its own.
    claude.ai adaptations were correct but recorded nowhere; on 2026-10-04 they
    were added to LeetCode-CCFCSP memory/decisions.md, and the template's
    migrate path now has the agent record the list in decisions.md.
-3. Acceptance 3 and 4 were run on 2026-10-21 (see Recent Decisions) on a
+3. Acceptance 3, 4 and 5 were run on 2026-10-21 (see Recent Decisions) on a
    scratchpad clone of MATH2121, one-shot runs (`opencode run`, `dsh
-   --profile headless`), not the interactive UIs. Still open: acceptance 5
-   (OpenCode or Harness -> Claude Code) and a run in the interactive UIs
-   (OpenCode TUI, Harness web at `npx @deepseek-ai/dsh web`, port 3080).
+   --profile headless`, `claude -p`), not the interactive UIs. Still open:
+   a run in the interactive UIs (OpenCode TUI, Harness web at
+   `npx @deepseek-ai/dsh web`, port 3080), and whether Claude Code commits
+   after its memory writes (it did not in acceptance 5).
    The Harness headless profile does not see a key saved on the web Models
    page; it needs DEEPSEEK_API_KEY in the environment.
-4. Confirm the template guard for DeepSeek Harness inside this repo; Claude
-   Code and OpenCode (2026-10-21, nemotron) have been probed and hold.
+4. Template guard: holds in all three agents. Claude Code (earlier),
+   OpenCode with nemotron and DeepSeek Harness with DeepSeek V4.1 Flash
+   (both 2026-10-21, clones of this repo) each said this is the framework
+   repo, quoted or followed the guard, and changed nothing.
 
 ## Open Questions
 - The 30-minute open-session check gives false positives: at 15:13 BST on
@@ -90,6 +93,31 @@ it a file of its own.
   date before saving and takes it out; and it commits right after every
   write to memory/, instead of when a piece of work "is finished", which
   left the decision to the model.
+  Third run the same day, all four combinations, same two turns on a clean
+  clone, checked by script (scratchpad runtest.sh): Harness + DeepSeek and
+  OpenCode + DeepSeek now pass every check (session file before the first
+  reply, a commit after each turn, no date in the note, no clock time,
+  AGENTS.md untouched, no commit logged in memory). OpenCode + nemotron
+  created the session file but never committed, put a date in the note
+  and a Patterns line, and claimed a pattern count of 10 it never wrote.
+  OpenCode + local qwen3.6:27b created the session file and committed
+  once, but logged the slip only in handoff.md and the session file, not
+  in progress.md or the error log. Conclusion: with DeepSeek V4.1 Flash
+  either agent is a full fallback; the free and local models are fit only
+  for a short pickup.
+- 2026-10-21 acceptance 5 passed (OpenCode -> Claude Code). OpenCode +
+  DeepSeek V4.1 Flash ran the two usual turns on a clean MATH2121 clone and
+  was closed without a handoff; then `claude -p "我回來了"` (Claude Code
+  2.1.218) in the same folder. It first stopped on the one-session rule (the
+  OpenCode session file was a minute old) and asked whether that session
+  was closed, changing nothing; after "closed" it created
+  2026-10-21-03-claude-code.md and stated the topic, where learning stands,
+  the OpenCode session's discussion (midterm, mistake 71 a third time), the
+  mode normal set by OpenCode, the open question OpenCode left, and the
+  choices for the next step, without asking for the language. Gaps: it
+  did not commit its session file, and the size check was blocked by the
+  test's own tool allowlist (PowerShell not allowed), which also cost
+  several denied attempts at the UK date before it used Bash.
 - 2026-10-21, learner approved after a post-midterm review of all six
   projects (all following the rules: UK dates, session names, sources
   untouched, no cross-project edits, handoff.md within 40 lines). Template
