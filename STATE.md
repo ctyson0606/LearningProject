@@ -33,15 +33,15 @@ it a file of its own.
    claude.ai adaptations were correct but recorded nowhere; on 2026-10-04 they
    were added to LeetCode-CCFCSP memory/decisions.md, and the template's
    migrate path now has the agent record the list in decisions.md.
-3. OpenCode has run once in a real project: PHYS1002 session
-   2026-10-16-01-opencode.md (machine not recorded; the learner's "testing
-   opencode" commit there is +0800, so probably the Mac). It ran the 30-minute
-   check, rewrote handoff.md into its shape, saved the board before clearing
-   it, and named its session file correctly. Not yet checked: what it told
-   the learner at start (acceptance 3 proper). DeepSeek Harness has never run.
-4. Run the remaining acceptance items with the real agents. Also confirm the
-   template guard holds for OpenCode and DeepSeek Harness inside this repo;
-   only Claude Code has been probed.
+3. Acceptance 3 and 4 were run on 2026-10-21 (see Recent Decisions) on a
+   scratchpad clone of MATH2121, one-shot runs (`opencode run`, `dsh
+   --profile headless`), not the interactive UIs. Still open: acceptance 5
+   (OpenCode or Harness -> Claude Code) and a run in the interactive UIs
+   (OpenCode TUI, Harness web at `npx @deepseek-ai/dsh web`, port 3080).
+   The Harness headless profile does not see a key saved on the web Models
+   page; it needs DEEPSEEK_API_KEY in the environment.
+4. Confirm the template guard for DeepSeek Harness inside this repo; Claude
+   Code and OpenCode (2026-10-21, nemotron) have been probed and hold.
 
 ## Open Questions
 - The 30-minute open-session check gives false positives: at 15:13 BST on
@@ -59,6 +59,26 @@ it a file of its own.
 ## Known Annoyances
 
 ## Recent Decisions
+- 2026-10-21 agent test, learner approved the two template changes it led
+  to. Each run started on a clean clone of MATH2121 with "我回來了", then
+  "the det swap sign slipped; back to normal mode"; every claimed edit was
+  checked against git. OpenCode + nemotron-3-ultra-free (free; 4 of 5 free
+  models were rate-limited) and OpenCode + local qwen3.6:27b read memory and
+  asked the right question, but skipped the session file, the full start
+  report and the size check, and nemotron claimed an edit it never made.
+  OpenCode + DeepSeek V4.1 Flash 1017 (`deepseek/deepseek-flash`) did
+  nearly everything and committed on its own, but wrote a clock time,
+  edited AGENTS.md without asking and skipped the size check. DeepSeek
+  Harness + the same model was the most compliant (the only one to run the
+  size check; no clock time; AGENTS.md untouched; own commit under UK TZ;
+  reused mistake 71 instead of a new number) but created its session file
+  only in the second turn. So compliance depends mainly on the model, and
+  DeepSeek V4.1 Flash is a usable fallback when the Claude quota runs out.
+  Two faults every agent showed became template changes, synced into all
+  six projects: the session file is now created at start step 4, before the
+  first reply, so a session cut off after one reply leaves a trace; and the
+  progress.md note rule now carries a right and a wrong example, because
+  every model added a dated "recurred in the midterm" phrase to the note.
 - 2026-10-21, learner approved after a post-midterm review of all six
   projects (all following the rules: UK dates, session names, sources
   untouched, no cross-project edits, handoff.md within 40 lines). Template

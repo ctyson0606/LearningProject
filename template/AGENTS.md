@@ -47,29 +47,32 @@ Human language:  the language for conversation and everything the learner reads
 2. If Setup is not `done`, run Setup before anything else.
 3. Check that no other session is open in this folder (see "One project,
    one session").
-4. Read memory/handoff.md, memory/progress.md, memory/todo.md and the last
-   40 lines of the newest file in memory/sessions/ (the last one in name
-   order); read more of it only if handoff.md leaves unclear where things
-   stand. Read memory/decisions.md when an earlier choice matters.
-5. If memory/handoff.md is longer than its limit, has sections its shape
+4. Create this session's file now, before your first reply, with one line
+   saying the session started: memory/sessions/YYYY-MM-DD-NN-<agent>.md.
+   A session cut off after its first reply must still leave a trace.
+   YYYY-MM-DD is today's UK date. NN is two digits: 01 for the first session
+   file of that date, otherwise one more than the highest number already
+   there for it, whichever agent wrote it. <agent> is `claude-code`,
+   `opencode`, `deepseek-harness`, or your own name.
+5. Read memory/handoff.md, memory/progress.md, memory/todo.md and the last
+   40 lines of the newest earlier file in memory/sessions/ (the last one in
+   name order before yours); read more of it only if handoff.md leaves
+   unclear where things stand. Read memory/decisions.md when an earlier
+   choice matters.
+6. If memory/handoff.md is longer than its limit, has sections its shape
    does not have, or disagrees with the newest session file, rewrite it first
    (see "memory/handoff.md"). Do the same for memory/progress.md if it is not
    in its shape.
-6. Check the size of this file (`wc -c AGENTS.md`). DeepSeek Harness reads
+7. Check the size of this file (`wc -c AGENTS.md`). DeepSeek Harness reads
    at most 65,536 bytes of instruction files and silently drops the rest,
    which is the end of Project instructions. Above 60,000 bytes, tell the
    learner and propose moving a section that is needed only for one kind of
    task (past papers, exam preparation, a long reference table) verbatim into
    a memory/ file, leaving a one-line pointer in its place that says when to
    read it. Move it once they agree.
-7. Tell the learner, in the human language: the topic, where learning stands,
+8. Tell the learner, in the human language: the topic, where learning stands,
    what was discussed last time, the current mode (with days left if there is
    a deadline), and the next step.
-8. Create this session's file: memory/sessions/YYYY-MM-DD-NN-<agent>.md.
-   YYYY-MM-DD is today's UK date. NN is two digits: 01 for the first session
-   file of that date, otherwise one more than the highest number already
-   there for it, whichever agent wrote it. <agent> is `claude-code`,
-   `opencode`, `deepseek-harness`, or your own name.
 
 ## One project, one session
 
@@ -255,7 +258,10 @@ A short index of what the learner knows, for agents, not a log.
   row; never add a row for a single answer.
 - The Note says what is solid and what is still weak now, plus where the log
   is, in at most about 30 words. Rewrite it whole when the row changes; never
-  add a dated entry to it, or the row becomes a log.
+  add a dated entry to it, or the row becomes a log. The date belongs only in
+  the Updated column; what happened when goes in the session file.
+  - Right: `Solid: Col/Nul bases. Weak: swap sign in det row ops (mistake 71).`
+  - Wrong: `... Weak: swap sign; recurred in the midterm 2026-10-21.`
 - Under "Patterns", one line per recurring mistake or habit, with how many
   times it has been seen. Update the count; do not add the same pattern again.
 - The details of single answers go in the session file. If Project
