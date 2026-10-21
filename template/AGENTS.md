@@ -47,17 +47,25 @@ Human language:  the language for conversation and everything the learner reads
 2. If Setup is not `done`, run Setup before anything else.
 3. Check that no other session is open in this folder (see "One project,
    one session").
-4. Read memory/handoff.md, memory/progress.md, memory/todo.md and the newest
-   file in memory/sessions/ (the last one in name order). Read
-   memory/decisions.md when an earlier choice matters.
+4. Read memory/handoff.md, memory/progress.md, memory/todo.md and the last
+   40 lines of the newest file in memory/sessions/ (the last one in name
+   order); read more of it only if handoff.md leaves unclear where things
+   stand. Read memory/decisions.md when an earlier choice matters.
 5. If memory/handoff.md is longer than its limit, has sections its shape
    does not have, or disagrees with the newest session file, rewrite it first
    (see "memory/handoff.md"). Do the same for memory/progress.md if it is not
    in its shape.
-6. Tell the learner, in the human language: the topic, where learning stands,
+6. Check the size of this file (`wc -c AGENTS.md`). DeepSeek Harness reads
+   at most 65,536 bytes of instruction files and silently drops the rest,
+   which is the end of Project instructions. Above 60,000 bytes, tell the
+   learner and propose moving a section that is needed only for one kind of
+   task (past papers, exam preparation, a long reference table) verbatim into
+   a memory/ file, leaving a one-line pointer in its place that says when to
+   read it. Move it once they agree.
+7. Tell the learner, in the human language: the topic, where learning stands,
    what was discussed last time, the current mode (with days left if there is
    a deadline), and the next step.
-7. Create this session's file: memory/sessions/YYYY-MM-DD-NN-<agent>.md.
+8. Create this session's file: memory/sessions/YYYY-MM-DD-NN-<agent>.md.
    YYYY-MM-DD is today's UK date. NN is two digits: 01 for the first session
    file of that date, otherwise one more than the highest number already
    there for it, whichever agent wrote it. <agent> is `claude-code`,
@@ -182,7 +190,11 @@ instructions define their own modes, use those instead of the defaults below.
 
 The learner switches mode with one sentence. Store any deadline as an
 absolute UK date (YYYY-MM-DD, no clock time), never as "in 3 days". Once a
-deadline has passed, ask whether to return to normal.
+deadline has passed, ask whether to return to normal, and in the same message
+name the parts of Project instructions that served only that deadline: its
+date and exam-day logistics, sprint rules, schedules, "upcoming" dates now
+past. Once the learner agrees, delete them, or shorten a past exam to one line
+when its format still helps with the next one.
 
 ## Memory: write as you go
 
@@ -241,6 +253,9 @@ A short index of what the learner knows, for agents, not a log.
 - One row per topic in a table: Topic, Status, Note, Updated. Status is
   ✅ solid, 🟡 shaky, or ❌ not yet. When a topic's status changes, update its
   row; never add a row for a single answer.
+- The Note says what is solid and what is still weak now, plus where the log
+  is, in at most about 30 words. Rewrite it whole when the row changes; never
+  add a dated entry to it, or the row becomes a log.
 - Under "Patterns", one line per recurring mistake or habit, with how many
   times it has been seen. Update the count; do not add the same pattern again.
 - The details of single answers go in the session file. If Project
@@ -254,7 +269,9 @@ A short index of what the learner knows, for agents, not a log.
   answer key, a sealed spec) goes here too, never in materials/generated/,
   which the learner browses. Start such a file with a line saying it is
   agent-only, name it in handoff.md while it is in use, and reveal its
-  content on the blackboard when the time comes.
+  content on the blackboard when the time comes. Once all of it has been
+  revealed, delete the file: what is worth keeping has gone into
+  materials/generated/ by then. Keep only files still in use.
 - materials/sources/: the learner's originals. Read-only. Edit a file only
   when the learner names it. When files are added, moved or removed, read
   the new ones and update the source list in Project instructions to match.
@@ -308,6 +325,16 @@ materials/generated/blackboard.md:
   preview, which refreshes whenever the file changes. If the learner sees raw
   source, they have the source tab open: right-click the tab, "Reopen Editor
   With...", "Markdown Preview".
+
+## Git
+
+- Commit on your own whenever a piece of work is finished (a problem
+  marked, notes written, memory updated), so nothing is lost if the session
+  stops. Commit only this project's files, never push, and use the TZ prefix
+  from "Time: UK dates only". Project instructions may say otherwise.
+- Never record commits in memory files: no commit hashes and no "committed"
+  lines in handoff.md, session files or progress.md. git log already holds
+  them, and a line about a commit is itself a new change left uncommitted.
 
 ## Language
 

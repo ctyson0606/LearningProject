@@ -51,13 +51,16 @@ template/
     handoff.md         Current state only, rewritten whole, at most 40
                        lines: Updated, Agent, Mode, Deadline; Now, Next
                        step, Paused
-    progress.md        AI-facing index: one row per topic (✅/🟡/❌) plus
-                       recurring patterns; points to project records if any
+    progress.md        AI-facing index: one row per topic (✅/🟡/❌; a note
+                       of about 30 words, rewritten, never appended to)
+                       plus recurring patterns; points to project records
+                       if any
     decisions.md       Decisions and their reasons, oldest first
     todo.md            To-dos
     <agent-only>.md    Anything the learner must not see yet (answer keys,
                        sealed specs); first line says agent-only, named in
-                       handoff.md while in use, revealed on the blackboard
+                       handoff.md while in use, revealed on the blackboard,
+                       deleted once fully revealed
     sessions/          One summary per conversation:
                        YYYY-MM-DD-NN-<agent>.md (NN = order within the day)
 ```
@@ -116,7 +119,24 @@ Defaults, replaced by modes the project instructions define:
 - sprint: e.g. "exam in 3 days"; high-yield exam content only, many exercises
 - practice: nothing new; set, mark and explain exercises
 Deadlines are stored as absolute UK dates; once passed, the agent asks whether
-to return to normal.
+to return to normal and names the parts of Project instructions that served
+only that deadline (date, logistics, sprint rules, schedules), removing them on
+agreement.
+
+## Size limit
+At every start the agent checks AGENTS.md; above 60,000 bytes it tells the
+learner and proposes moving a section needed only for one kind of task
+verbatim into memory/, leaving a pointer that says when to read it. DeepSeek
+Harness reads at most 65,536 bytes of instruction files and drops the rest.
+Learner's review, 2026-10-21: COMP2012H had reached 66,783 bytes.
+
+## Git
+The agent commits on its own whenever a piece of work is finished, only this
+project's files, never pushing, unless Project instructions say otherwise
+(COMP2012H: only when asked). Commits are never recorded in memory files.
+Learner's review, 2026-10-21: MATH2121 and COMP2012H each invented the
+no-logging rule after commit-logging churn; the learner chose own commits as
+the default.
 
 ## Update rules
 | Content | How |
