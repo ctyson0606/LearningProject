@@ -1,90 +1,147 @@
-# 学习项目模板
+<!-- Hero -->
+<div align="center">
+  <h1>学习项目模板</h1>
+  <p><b>放在你自己电脑上的 Claude Project</b>：每个科目一个文件夹，里面放你的教材、笔记和 AI 的记忆，所以你在那里打开的任何 agent 都能从上一个停下的地方接着教。</p>
+  <p>
+    <img alt="agents: Claude Code | OpenCode | DeepSeek Harness" src="https://img.shields.io/badge/agents-Claude%20Code%20%7C%20OpenCode%20%7C%20DeepSeek%20Harness-4d6bfe">
+    <img alt="content: Markdown only" src="https://img.shields.io/badge/content-Markdown%20only-brightgreen">
+  </p>
+  <p>🌏 简体中文 · <a href="./README.zh-TW.md">繁體中文</a> · <a href="./README.md">English</a></p>
+</div>
 
-[English](README.md) | [繁體中文](README.zh-TW.md) | 简体中文
+<!-- Screenshot placeholder: commit the image at docs/screenshot.png, then remove this comment pair.
+<p align="center"><img src="docs/screenshot.png" alt="VS Code 里黑板上的一堂课" width="720"></p>
+-->
 
-一个文件夹模板，用起来就像 Claude Project，只是放在你自己的电脑上。
+假设上课上到一半 Claude 的额度用完，你换了另一个 agent。平常新的 agent 什么都不知道，你得从头解释一遍。在这里，记忆是文件夹里的普通文件，每个 agent 读写的都是同一批文件，而且边做边存：一个 agent 突然停掉，最多只会损失最后几分钟。
 
-每次想学新东西，就把这个模板复制到一个新文件夹。这个文件夹会保存你的资料、你的笔记，以及 AI 对你学习进度的记忆。你在里面打开任何一个 AI Agent，例如 Claude Code、OpenCode 或 DeepSeek Harness，它都会先读这份记忆。所以它知道你学了什么、上次聊了什么、下一步要做什么。
+## ✨ 功能
 
-## 为什么需要它
+- **记忆就是普通文件**：你学到哪、懂了什么、做过什么决定、接下来做什么，都在 `memory/` 里。
+- **随时换 agent**：关掉一个，在同一个文件夹打开另一个，它会告诉你学到哪里。
+- **边做边存**：不用特别让它存；只有想一次全部存好时才说“handoff”。
+- **黑板**：教学内容写在 `materials/generated/blackboard.md`，VS Code 会直接显示排版好的样子，数学式也是；聊天只留简短消息。
+- **用你的语言**：写给你看的都用你选的语言；写给 AI 的保持英文。
+- **模式**：说“我三天后考试”或“今天只想练习”，教法就会跟着变。
+- **迁移 Claude Project**：你的指示、教材和进度都能一起带过来。
 
-假设上课上到一半，Claude 的额度用完了，你换成另一个 Agent。一般情况下，新的 Agent 什么都不知道，你得从头再解释一遍。
+## 🚀 安装
 
-在这里，记忆就是文件夹里的普通文件，每个 Agent 都读写同一份文件。Agent 会边学边存，所以就算它突然停掉，你最多只会少掉最后几分钟。
+前提：git、VS Code，以及至少一个 agent：Claude Code、OpenCode 或 DeepSeek Harness。
 
-## 开始学一个新主题
+**方式一 · Windows（PowerShell）**
 
-1. 下载这个 repository：
-
-```
+```powershell
 git clone https://github.com/ctyson0606/LearningProject.git
-```
-
-2. 在这个 repository **外面**新建一个文件夹，把 `template/` 里面的所有东西复制进去。Windows（PowerShell）：
-
-```
 mkdir D:\learning\my-topic
 Copy-Item -Recurse LearningProject\template\* D:\learning\my-topic\
 ```
 
-   macOS 或 Linux：
+**方式二 · macOS 或 Linux**
 
-```
+<details>
+<summary>同样的步骤，用 POSIX shell</summary>
+
+```bash
+git clone https://github.com/ctyson0606/LearningProject.git
 mkdir -p ~/learning/my-topic
 cp -r LearningProject/template/. ~/learning/my-topic/
 ```
 
-3. 把你的资料（课本、幻灯片、历年真题）放进 `materials/sources/`。
-4. 用 VS Code 打开新文件夹，在里面打开一个 Agent，随便说一句话，例如「hi」。
-5. 它会先问你要用什么语言，再问这是新主题，还是从 Claude Project 搬过来的。选「新主题」，然后回答几个关于你的目标、你喜欢怎么学的问题。
-6. 它会给你看一份简短的摘要，说明它打算怎么教你。你说没问题之后，就可以开始学了。
+</details>
 
-## 迁移现有的 Claude Project
+新文件夹要建在这个仓库**外面**，然后把你的书、幻灯片和往年试题放进它的 `materials/sources/`。
 
-先做完上面的第 1 到第 4 步，然后选「从 Claude Project 搬过来」。Agent 会请你：
+**验证**
 
-- 把旧的项目指令给它（直接粘贴，或告诉它文件放在哪里）；
-- 把原始资料放进 `materials/sources/`，把以前 AI 帮你做的东西（笔记、错题本）放进 `materials/generated/`；
-- 去问你旧的 Claude Project「我们学到哪里了？下一步是什么？」，然后把回答粘贴给它。
+用 VS Code 打开新文件夹，在里面启动一个 agent，随便说句话，例如“hi”。它会先问你想用哪种语言。
 
-它会把你的指令翻译成英文，改掉只在 claude.ai 上才能用的部分，并在保存之前，把每一处改动都给你看过。
+## 🕹️ 使用
 
-## 换到另一个 Agent
+### 第一次对话
 
-关掉旧的 Agent，在同一个文件夹打开新的 Agent，这样就好了。新的 Agent 一启动就会告诉你目前学到哪里。
+1. agent 会问你的语言，再问这是新科目，还是从 Claude Project 迁移过来的。
+2. 如果是新科目，它会问几个关于你的目标和学习习惯的问题。
+3. 它会给你看一份简短的教学方式摘要。你说没问题之后，就开始上课。
 
-如果旧的 Agent 还能用，可以先说一声「交接」，让它把最后几分钟也存起来。
+### 迁移现有的 Claude Project
 
-## 你可以这样说
+照上面安装，然后选“从 Claude Project 迁移过来”。agent 会请你：
 
-| 你说 | 会发生什么 |
-|---|---|
-| 「我 3 天后要考试」 | 冲刺：只学考试需要的，大量做题 |
-| 「今天只想练习」 | 练习：不教新东西，只出题和订正 |
-| 「回到平常」 | 回到一般的教学方式 |
-| 「交接」 | 马上把所有东西存起来，方便你换 Agent |
-| 「我加了新文件」 | 它会读新文件，并更新资料清单 |
+- 把旧的项目指示给它，粘贴或提供文件都可以；
+- 把原始教材放进 `materials/sources/`，之前 AI 帮你做的东西放进 `materials/generated/`；
+- 问旧的 Claude Project“我们学到哪里了，接下来做什么？”，再把回答粘贴过来。
 
-如果你的项目指令有自己定义的模式，就改用那些模式。
+它会把你的指示翻译成英文，改掉只在 claude.ai 上才有用的部分，保存前把每一处改动都给你看。
 
-## 文件夹里有什么
+### 换到另一个 agent
 
-| 路径 | 是什么 | 谁来写 |
-|---|---|---|
-| `AGENTS.md` | 每个 Agent 都要遵守的规则，以及这个项目要怎么教你 | 设置时由 Agent 写；之后只在你要求时改 |
-| `CLAUDE.md` | 让 Claude Code 去读 `AGENTS.md` | 不用动它 |
-| `materials/sources/` | 你的原始资料 | 你。Agent 只会读 |
-| `materials/generated/` | Agent 帮你做的东西：笔记、练习题、摘要 | Agent |
-| `materials/generated/blackboard.md` | 黑板：当前的教学内容，数学公式会正常显示 | Agent |
-| `materials/generated/obsidian/` | 可以直接用 Obsidian 打开的笔记 | Agent |
-| `memory/` | 学到哪里、你懂什么、做过的决定、待办、对话摘要 | Agent，自动更新 |
+关掉旧的 agent，在同一个文件夹打开新的。如果旧的还能用，先说“handoff”。同一时间一个文件夹只开一个 agent：如果看起来还有别的 session 开着，新的会先问你再继续。
 
-Agent 会在黑板上教你，对话里只留简短的消息。因为对话窗口显示不了数学公式，长的讲解也会被往上滚走。在 VS Code 里，黑板一打开就是排版好的样子。
+### 你可以说的话
 
-给 AI 看的文件（`AGENTS.md` 和 `memory/`）用英文。给你看的东西，都用你选的语言。
+| 说 | 会发生什么 |
+| --- | --- |
+| “我三天后考试” | 冲刺：只教考试需要的，大量练习 |
+| “今天只想练习” | 练习：不教新东西，只做题和订正 |
+| “回到正常” | 恢复正常教学 |
+| “Handoff” | 立刻存好一切，方便你换 agent |
+| “我加了新文件” | 它会读那些文件，并更新你的教材清单 |
 
-## 目前状态
+如果你的项目指示定义了自己的模式，就以那些为准。
 
-这是早期版本，还没有完整测试过。创建项目、在不同 Agent 之间切换，都还没有用真的 Agent 实际跑过。
+## 📁 你的文件夹里有什么
 
-这个 repository 里的其他东西（`kit/`、`scripts/`、最外层的 `AGENTS.md` 等等）是用来开发这个模板的工具。要使用模板，你只需要 `template/` 这个文件夹。
+| 路径 | 是什么 | 谁写 |
+| --- | --- | --- |
+| `AGENTS.md` | 每个 agent 都要遵守的规则，以及这个项目怎么教你 | 设置时由 agent 写；之后只在你要求时才改 |
+| `CLAUDE.md` | 让 Claude Code 去读 `AGENTS.md` | 没人写；保持原样 |
+| `materials/sources/` | 你的原始教材 | 你；agent 只会读 |
+| `materials/generated/` | agent 帮你做的东西：笔记、练习、摘要 | agent |
+| `materials/generated/blackboard.md` | 当前的教学内容，数学式正确显示 | agent |
+| `materials/generated/obsidian/` | 可以用 Obsidian vault 打开的笔记 | agent |
+| `memory/` | 你学到哪、懂了什么、决定、待办、每次 session 的摘要 | agent，自动 |
+
+## 📊 状态
+
+已经在六个真实科目的文件夹里天天使用，主要用 Claude Code。2026-10-21 在其中一个的副本上，分别用 Claude Code、OpenCode 和 DeepSeek Harness 跑了同样的两轮对话：
+
+- **交接可行**：一个 OpenCode session 没有 handoff 就关掉，在同一个文件夹打开 Claude Code，它说出了学习进度。
+- **模型比 agent 更重要**：用 DeepSeek V4.1 Flash 时，OpenCode 和 DeepSeek Harness 都遵守了每条规则；免费和本地模型只适合短暂接手。
+- **还没试过**：OpenCode 和 DeepSeek Harness 的交互界面，这次都是一次一个命令驱动的。
+
+## 📦 项目结构
+
+```text
+template/AGENTS.md
+template/CLAUDE.md
+template/materials/sources/
+template/materials/generated/blackboard.md
+template/memory/
+template/.vscode/settings.json
+```
+
+- `template/AGENTS.md`：每个复制出来的文件夹一开始带着的规则和教学方法；
+- `template/CLAUDE.md`：Claude Code 会读的指引；
+- `template/materials/sources/`：空的，放学习者的教材；
+- `template/materials/generated/blackboard.md`：黑板；
+- `template/memory/`：记忆文件，保持初始格式；
+- `template/.vscode/settings.json`：把黑板以排版预览打开，并启用数学式。
+
+只有 `template/` 会被复制。这个仓库的其他部分（`kit/`、`scripts/`、最上层的 `AGENTS.md`）是用来制作模板的工具。
+
+## ⚠️ 兼容性与限制
+
+- Claude Code 能读 `materials/sources/` 里的 PDF；OpenCode 和 DeepSeek Harness 能不能读还不知道。
+- DeepSeek Harness 最多只加载 64 KiB 的指示，所以 `AGENTS.md` 超过 60,000 bytes 时，agent 会建议把一部分移到 `memory/`。
+- 如果有东西（同步、git 操作）改动了所有文件的日期，即使没有别的 session 开着，打开 session 时的检查也可能会问你。
+- 日期一律用英国日期，也不写时刻，不管 agent 在哪台电脑上运行。
+
+## ❓ 常见问题
+
+| 症状 | 怎么做 |
+| --- | --- |
+| 上课上到一半 Claude 额度用完 | 在同一个文件夹打开另一个 agent；它会从记忆接着教 |
+| 新的 agent 问是不是还有别的 session 开着 | 把另一个关掉，或告诉它已经关了 |
+| 数学式在聊天里显示成原始 LaTeX | 看黑板；VS Code 会排版显示 |
+| 命令行的 DeepSeek Harness 读不到你的 API key | 在环境变量设置 `DEEPSEEK_API_KEY`；网页设置里存的 key 在那里不会被用到 |
