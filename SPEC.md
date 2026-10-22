@@ -23,10 +23,14 @@ cannot read it, so a new agent starts with no idea where the learning stands.
 The learner's existing claude.ai Projects carry long hand-written tutor
 instructions that the local projects must be able to take over.
 
+## Milestones
+
 ## Usage
 Copy the contents of `template/` into a new folder outside this repo, put
 material into `materials/sources/`, start any agent there. That is "creating
 a Project". Switching projects is opening another folder.
+
+## Components
 
 ## Structure (data contract)
 ```

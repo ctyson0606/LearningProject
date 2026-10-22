@@ -43,6 +43,21 @@ On each write:
 4. Stamp `Last updated` in STATE.md.
 5. Say in one line what changed and where.
 
+One write the procedure does not otherwise name:
+
+- When an acceptance criterion in SPEC.md is verified or claimed done, write
+  its line under Acceptance status in STATE.md, replacing the one before:
+  `- <id>: <evidenced|claimed|not started> — <the command run and its result>
+  (<YYYY-MM-DD>)`. The id is the one SPEC.md gives the criterion, or AC<n> by
+  position when it gives none. `evidenced` without the command and result is
+  shown as `claimed` by the progress page, and a criterion with no line is shown
+  as not started. The page checks nothing; it shows the evidence so a person
+  can rerun it.
+
+translations/<lang>.md is not written as you go. It is filled when the
+progress page is asked for, as AGENTS.md says: a write that waited for nobody
+to ask for it was never made.
+
 <!-- source: METHOD.md 26-38 -->
 
 ### A delegated run writes memory before it returns.  `[T0]` `[2026-08-12]`

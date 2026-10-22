@@ -3,6 +3,7 @@
 ## Declarations
 MODE: project        # project | sprint
 TEAM: 1
+TRANSLATION:         # blank = none; a language tag such as zh-TW gives the progress page that language
 
 ## Environment facts
 install: none   # the deliverable is Markdown only; there is no code
@@ -37,6 +38,9 @@ e2e: none       # the deliverable is Markdown only; there is no code
   SPEC.md, METHOD.md, STATE.md and GOTCHAS.md. Talking to the user, and the
   README, follow whatever language they ask for. A memory file that
   accumulated in two languages is what this prevents, and it only accumulates.
+  The one exception is translations/<lang>.md, which exists only when
+  TRANSLATION is set and holds a translation for the progress page; the memory
+  files themselves stay English.
 - Write memory as you go, not when asked: the moment state changes, by
   kit/skills/memory-update.md. The memory files are always in scope. A session
   can stop without warning, and what was not written is lost with it.
@@ -87,6 +91,19 @@ SPEC.md, METHOD.md, STATE.md and GOTCHAS.md, which are never
 overwritten.
 scripts/check.sh verifies the invariants of this layout. Run it after
 any change to kit/, the stubs, or AGENTS.md itself.
+scripts/progress.sh (Windows: `powershell -ExecutionPolicy Bypass -File
+scripts/progress.ps1`) opens a page built from SPEC.md, STATE.md and git, in four
+tabs: progress (the goals and criteria of one milestone, each criterion a card
+that opens to what it means, how to try it and its evidence), a roadmap of the
+milestones, a features guide from the criteria that have evidence, and the
+structure of the components. When a commit or a Next Steps entry serves an
+acceptance criterion, name its id (AC3): that puts it on that criterion's card
+and gives it a chip that jumps there. It stores nothing, so it cannot go stale.
+With TRANSLATION set, `scripts/progress.sh --untranslated` lists what lacks a
+translation in translations/<lang>.md. Asked to open the page while TRANSLATION
+is set, first run it and write what it lists into that file, keeping every
+inline code span exactly as written, so the page opens translated. What is
+still missing the page offers to machine translate in the browser.
 Anything that belongs to SparkForge rather than to this project — a
 rule that proved wrong or useless here, a check that missed something,
 a stub or script that did not work, a framework rule this project was

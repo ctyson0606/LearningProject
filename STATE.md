@@ -59,6 +59,8 @@ it a file of its own.
   instead. If the others cannot, sources may need converting to text on
   adoption.
 
+## Acceptance status
+
 ## Known Annoyances
 
 ## Recent Decisions
