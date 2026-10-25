@@ -8,7 +8,7 @@ Change it only through the spec gate, never as you go, except a goal's How and
 Parts lines, written once its criteria all have evidence. What no longer holds
 is rewritten in place, not appended to; git holds the history.
 
-## Goal
+## Goals
 
 Build `template/`: a copy-to-adopt learning-project template that works like a
 local claude.ai Project, readable and writable by Claude Code, OpenCode and
@@ -16,6 +16,30 @@ DeepSeek Harness, so that switching agents by hand (e.g. when the Claude quota
 runs out) loses no context. It must serve two cases: starting a new subject,
 and migrating an existing claude.ai Project. Spec approved 2026-09-26,
 extended the same day with migration, project instructions and Obsidian.
+
+- G1 (M1): Start a new subject: copy the template into a folder, add the
+  material, and the agent sets the project up by asking the language, the
+  goal and how the learner likes to learn, showing a summary to approve.
+  - How: The template's AGENTS.md carries a start routine and a setup that
+    asks the language first, then new or migrate, and writes the project's
+    instructions only after the learner approves a summary of them.
+  - Parts: C1, C2
+- G2 (M1): The agent keeps the memory as it teaches, without being asked, so
+  where the learning stands is always on disk.
+  - How: The memory rules in AGENTS.md tell the agent to rewrite handoff.md
+    and add to the session file the moment something changes, and to commit
+    after every memory write.
+  - Parts: C1, C3
+- G3 (M1): Switch agents at any time — Claude Code, OpenCode, DeepSeek
+  Harness — and the new one picks up where the last one stopped.
+  - How: Every agent reads the same plain files: the start routine reads
+    handoff.md, progress.md, the to-do list and the end of the last session
+    file, then states where the learning stands. The rules live in AGENTS.md,
+    which all three agents load by themselves.
+  - Parts: C1, C2, C3
+- G4 (M1): Move an existing claude.ai Project in: its instructions, its
+  material and where the learning stood.
+- G5 (M1): The learner's own material is never changed.
 
 ## Problem
 Each subject needs a local space holding the material, the conversation
@@ -26,12 +50,20 @@ instructions that the local projects must be able to take over.
 
 ## Milestones
 
+- M1: v1 — the learning-project template
+
 ## Usage
 Copy the contents of `template/` into a new folder outside this repo, put
 material into `materials/sources/`, start any agent there. That is "creating
 a Project". Switching projects is opening another folder.
 
 ## Components
+
+- C1: Template rules (`template/AGENTS.md`) — the start routine, setup, modes and memory rules every agent follows
+- C2: Claude Code pointer (`template/CLAUDE.md`) — sends Claude Code to the template's AGENTS.md; uses C1
+- C3: Memory (`template/memory/`) — handoff, progress, decisions, to-dos and session files that every agent reads and writes
+- C4: Materials (`template/materials/`) — the learner's sources, never modified, and what the agent makes, the blackboard included
+- C5: Blackboard view (`template/.vscode/settings.json`) — opens the blackboard as a rendered preview with math on
 
 ## Structure (data contract)
 ```
@@ -163,20 +195,23 @@ migrating raw claude.ai conversation history, searching or indexing material,
 an adopt script, sorting migrated files automatically, anything specific to
 one course.
 
-## Acceptance (each item run with the real agent; nothing counts unrun)
-1. New: copy template to an empty folder, add one file to sources/, start
+## Acceptance criteria
+
+Each item is run with the real agent; nothing counts unrun.
+
+1. AC1 (G1) New: copy template to an empty folder, add one file to sources/, start
    Claude Code: it asks the language first, then new vs migrate, and writes
    Project instructions only after showing a summary.
-2. Keep learning without saying anything about memory: handoff.md and
+2. AC2 (G2) Keep learning without saying anything about memory: handoff.md and
    sessions/ get updated.
-3. Close Claude Code without a handoff, open OpenCode: it states topic, where
+3. AC3 (G3) Close Claude Code without a handoff, open OpenCode: it states topic, where
    learning stands, recent discussion, next step.
-4. Same as 3 with DeepSeek Harness.
-5. Reverse direction (OpenCode -> Claude Code) passes.
-6. After a switch, the new agent does not ask for the language again; the
+4. AC4 (G3) Same as 3 with DeepSeek Harness.
+5. AC5 (G3) Reverse direction (OpenCode -> Claude Code) passes.
+6. AC6 (G3) After a switch, the new agent does not ask for the language again; the
    current mode and deadline carry over.
-7. Nothing in sources/ is modified at any point.
-8. Migrate: run the learner's LeetCode / CCF CSP Project instructions through
+7. AC7 (G5) Nothing in sources/ is modified at any point.
+8. AC8 (G4) Migrate: run the learner's LeetCode / CCF CSP Project instructions through
    the migrate path. The result is English, keeps every rule, has no
    claude.ai-only mechanics left, records Traditional Chinese as the human
    language, and the agent teaches the way the original Project did.

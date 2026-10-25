@@ -3,7 +3,7 @@
 ## Declarations
 MODE: project        # project | sprint
 TEAM: 1
-TRANSLATION:         # blank = none; a language tag such as zh-TW gives the progress page that language
+TRANSLATION: zh-TW   # blank = none; a language tag such as zh-TW gives the progress page that language
 
 ## Environment facts
 install: none   # the deliverable is Markdown only; there is no code

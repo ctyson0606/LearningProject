@@ -61,6 +61,15 @@ it a file of its own.
 
 ## Acceptance status
 
+- AC1: evidenced — the learner's first real project, a new subject set up with Claude Code: it asked the language first, confirmed the draft before writing, and wrote the project instructions after the summary, all visible in its files (2026-09-26)
+- AC2: evidenced — the same project: every memory file was updated without being asked (2026-09-26)
+- AC3: evidenced — `opencode run "我回來了"` with DeepSeek V4.1 Flash on a clean clone of that project, closed without a handoff: it stated the topic, where learning stood and the next step, and passed every scripted check (2026-10-21)
+- AC4: evidenced — `dsh --profile headless` with DeepSeek V4.1 Flash, the same two turns on a clean clone: it passed every scripted check (2026-10-21)
+- AC5: evidenced — `claude -p "我回來了"` after an OpenCode session closed without a handoff: it stated the topic, where learning stood, the OpenCode session's discussion and the next step (2026-10-21)
+- AC6: evidenced — in the same run Claude Code did not ask for the language again and kept the mode OpenCode had set (2026-10-21)
+- AC7: claimed — a review of all six real projects found the sources untouched; the review was read, not a command whose output is recorded here (2026-10-21)
+- AC8: claimed — a migrated Project's instructions were audited: about 150 rules checked, none missing, weakened or changed, English throughout, Traditional Chinese recorded; whether it teaches the way the original did cannot be judged until a problem is taught there (2026-10-04)
+
 ## Known Annoyances
 
 ## Recent Decisions
