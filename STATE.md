@@ -1,6 +1,6 @@
 # STATE
 
-> Last updated: 2026-10-21
+> Last updated: 2026-10-26
 
 Current working state. Superseded content is deleted, not archived.
 For durable rules see METHOD.md.
@@ -53,7 +53,9 @@ it a file of its own.
   PHYS1002 with git status clean, so `find memory/sessions -mmin -30` listed
   old session files. The learner chose to leave it as is for now
   (2026-10-21); possible fix: check only the newest session file, or also
-  require uncommitted changes.
+  require uncommitted changes. Seen again on 2026-10-26: sources/ files in
+  COMP2012H, ECON1221 and LeetCode-CCFCSP had fresh mtimes with git clean,
+  and every file in Cybersecurity was fresh after it was copied in.
 - Can OpenCode and DeepSeek Harness read PDFs in materials/sources/? Claude
   Code can (20 pages per read), and in MATH2121 it extracted text with pypdf
   instead. If the others cannot, sources may need converting to text on
@@ -73,6 +75,25 @@ it a file of its own.
 ## Known Annoyances
 
 ## Recent Decisions
+- 2026-10-26 review of D:\Learning, now seven projects: Cybersecurity
+  (set up 2026-10-22 by Claude Code, then taught by DeepSeek Harness, its
+  own remote) is the first real project taught mainly by Harness. Its
+  2026-10-24-01 session ran past UK midnight and wrote 2026-10-24 on every
+  entry made on 2026-10-25 (session lines 33-82, handoff Updated and
+  "Session ended", the Part 3 progress row), although the template already
+  says to re-run the date command for every date because a session can run
+  past midnight: a model compliance gap, not a missing rule. Fixed from the
+  commit dates and committed there, not pushed. Learner approved two more
+  fixes: LeetCode-CCFCSP's .gitignore now ignores the learner's code repo
+  copy in materials/generated/CCF-CSP_Q1-Q2/ (the 2026-09-30 decision never
+  added the line) and its AGENTS.md no longer says the repo lives outside
+  the folder; MATH2121 progress.md rewritten to its shape (11,563 -> 9,876
+  bytes, no dates in notes or patterns, every note under 30 words, the
+  "half-known" rule kept once as the exam-mode line). The framework part of
+  all seven AGENTS.md files already matched the template (only Status
+  differs); MATH2121's settings.json comment was the one file synced.
+  Committed in each project, not pushed; Cybersecurity has a remote, so its
+  correction commit must be pushed before another computer continues there.
 - 2026-10-21 agent test, learner approved the two template changes it led
   to. Each run started on a clean clone of MATH2121 with "我回來了", then
   "the det swap sign slipped; back to normal mode"; every claimed edit was
